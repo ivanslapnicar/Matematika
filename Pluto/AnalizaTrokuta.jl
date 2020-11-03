@@ -21,7 +21,7 @@ Za zadani trokut automatski se računaju:
 
 * opseg,
 * površina,
-* kutevi u stupnjevima,
+* kutovi u stupnjevima,
 * težišnice i težište,
 * visine i sjecište visina,
 * simetrale stranica, središte i radijus opisane kružnice, i
@@ -96,7 +96,7 @@ P=površina(A,B,C)
 
 # ╔═╡ 526b20c0-1d25-11eb-3167-934f431a9db8
 md"
-## Kutevi 
+## Kutovi 
 
 $\alpha=\arccos \frac{\overrightarrow{AB}\cdot\overrightarrow{AC}}{|\overrightarrow{AB}||\overrightarrow{AC}|},\quad
 \beta=\arccos \frac{\overrightarrow{BA}\cdot\overrightarrow{BC}}{|\overrightarrow{BA}||\overrightarrow{BC}|},\quad
@@ -104,7 +104,7 @@ $\alpha=\arccos \frac{\overrightarrow{AB}\cdot\overrightarrow{AC}}{|\overrightar
 "
 
 # ╔═╡ 229190e0-1d26-11eb-06ad-f31d46ff5432
-function kutevi(A,B,C)
+function kutovi(A,B,C)
 	# Funkcija računa kuteve u stupnjevima
 	α=acosd((B-A)⋅(C-A)/(norm(B-A)*norm(C-A)))
 	β=acosd((A-B)⋅(C-B)/(norm(A-B)*norm(C-B)))
@@ -113,7 +113,7 @@ function kutevi(A,B,C)
 end
 
 # ╔═╡ 4719fba0-1d26-11eb-2267-b361bf7918e9
-α,β,γ=kutevi(A,B,C)
+α,β,γ=kutovi(A,B,C)
 
 # ╔═╡ 9d83b7b0-1d26-11eb-1210-f5da77878fde
 # Provjera
