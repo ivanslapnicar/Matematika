@@ -8,6 +8,7 @@ using InteractiveUtils
 begin
 	using Plots
 	using LinearAlgebra
+	plotly()
 end
 
 # ╔═╡ be21625e-1cf1-11eb-2efb-0b857e0bbd1e
@@ -16,8 +17,30 @@ md"
 
 Zadan je trokut $\triangle ABC$. Kutove uz vrhove $A$, $B$ i $C$ označavamo s $\alpha$, $\beta$ i $\gamma$, redom.
 
-Točke indetificiramo s pripadnim vektorima, na primjer točku $T=(x,y,z)$ identificiramo s vektorom $\overrightarrow{OT}=x\vec i+y\vec j+z\vec k$ i skraćeno zapisujemo kao vektor `T=[x,y,z]`. 
+Za zadani trokut automatski se računaju:
+
+* opseg,
+* površina,
+* kutevi u stupnjevima,
+* težišnice i težište,
+* visine i sjecište visina,
+* simetrale stranica, središte i radijus opisane kružnice, i
+* simetrale kuteva, središte i radijus upisane kružnice,
+
+te nacrtaju pripadne slike.
+
+
+
+__Napomena__: Točke definiramo kao `Tuple()`, na primjer `T=(x,y,z)`. Radi računanja vektorskog produkta porebno je `Tuple()` konvertirati u tip `Vector{}` što se radi s naredbom `collect()`.
 "
+
+# ╔═╡ b40e846c-1cf2-11eb-0375-cd3f3e221358
+# Zadajmo trokut ABC
+begin
+	A=(1,2,5)
+	B=(-1,0,-3)
+	C=(2,1,-1)
+end
 
 # ╔═╡ 9bcc7de0-1d3e-11eb-1f26-49ae5603bd60
 begin
@@ -33,18 +56,12 @@ begin
 	×(A::Array,B::Tuple)=×(A,collect(B))
 end
 
-# ╔═╡ b40e846c-1cf2-11eb-0375-cd3f3e221358
-# Zadajmo trokut ABC
-begin
-	A=(1,2,3)
-	B=(-1,0,-3)
-	C=(2,1,-1)
-end
-
 # ╔═╡ 1bed9df2-1cf3-11eb-3da5-0ff167b35323
 begin
-	surface([A,B,C],legend=false, title="Trokut",color=:lightgray )
-	scatter!([A,B,C],series_annotations=["A","B","C"])
+	# Plots.markersizes=2
+	mesh3d([A,B,C],legend=false, title="Trokut",color=:lightgray)
+	scatter!([A,B,C],ms=2) # ms = markersize
+	plot!(xlabel="x",ylabel="y",zlabel="z")
 end
 
 # ╔═╡ 52805212-1cf6-11eb-148c-b118898c3bd1
@@ -142,7 +159,8 @@ A₁,B₁,C₁,T=težište(A,B,C)
 # ╔═╡ 996e3846-1cf7-11eb-11dc-dfd833157463
 # Nacrtajmo polovišta nasuprotnih stranica i spojnice, te težište
 begin
-	scatter!([A₁,B₁,C₁,T],series_annotations=["A₁","B₁","C₁","T"])
+	scatter!([A₁,B₁,C₁],title="Težište",ms=2)
+	scatter!(T,color=:black,ms=2)
 	plot!([A,A₁])
 	plot!([B,B₁])
 	plot!([C,C₁])
@@ -188,9 +206,11 @@ A₂,B₂,C₂,Oc=ortocentar(A,B,C)
 
 # ╔═╡ 8e7d8590-1d42-11eb-031e-6d3fa68ae707
 begin
-	surface([A,B,C],legend=false, title="Trokut",color=:lightgray )
-	scatter!([A,B,C],series_annotations=["A","B","C"])
-	scatter!([A₂,B₂,C₂,Oc],series_annotations=["A₁","B₁","C₁","Oc"])
+	mesh3d([A,B,C],legend=false, title="Sjecište visina",color=:lightgray )
+	scatter!([A,B,C],ms=2)
+	scatter!([A₂,B₂,C₂],ms=2)
+	scatter!(Oc,color=:black,ms=2)
+	plot!(xlabel="x",ylabel="y",zlabel="z")
 	# Provjera sijeku li se visine u istoj točki
 	plot!([A,A₂])
 	plot!([B,B₂])
@@ -206,6 +226,8 @@ md"
 ## Opisana kružnica
 
 Središte $S$ __opisane kružnice__ je sjecište __simetrala stranica__, a radijus $r$ je udaljenost od središta do bilo kojeg vrha.
+
+Vektor smjera simetrale stranice se računa pomoću vektorsko-vektorskog produkta.
 "
 
 # ╔═╡ 184d7680-1d49-11eb-2505-b95fc1316ea0
@@ -216,7 +238,6 @@ function opisana_kružnica(A,B,C)
 	sAC=pravac((A+C)/2,((C-A)×(C-B))×(C-A))
 	# Simetrala stranice AB
 	sAB=pravac((A+B)/2,((B-A)×(C-A))×(B-A))
-
 	# Središte opisane kružnice
 	S=presjek(sBC,sAC)
 	# Radijus opisane kružnice
@@ -227,21 +248,98 @@ end
 # ╔═╡ dce70d80-1d49-11eb-2287-097c591556b3
 S,r=opisana_kružnica(A,B,C)
 
+# ╔═╡ 3066e240-1e09-11eb-3960-cf7fcafd4afb
+md"
+### Kružnica u prostoru
+
+Točke na kružnici sa središtem u točki $S=(s_x,s_y,s_z)$ radijusa $r$ koja leži u ravnini $\mathcal{R}$ računaju su formulom 
+
+$$
+\begin{pmatrix}x \\ y \\z \end{pmatrix}=\begin{pmatrix}s_x \\ s_y \\s_z \end{pmatrix} + (r\cos\phi)  \vec{u}_0 +(r \sin\phi )\vec{v}_0, \quad \phi\in[0,2\pi],$$
+
+gdje su $\vec{u}_0$ i $\vec{v}_0$ međusobno okomiti jedinični vektori paralelni s ravninom $\mathcal{R}$.
+"
+
+# ╔═╡ 7cecba42-1e09-11eb-2c71-19ca6bb64aa1
+function kružnica(A,B,C,S,r)
+	u=collect(B-A)
+	v=((B-A)×(C-A))×(B-A)
+	u₀=u/norm(u)
+	v₀=v/norm(v)
+	Φ=range(0,stop=2*pi,length=201)
+	return [S+r*cos(ϕ).*Tuple(u₀)+r*sin(ϕ).*Tuple(v₀) for ϕ in Φ]
+end
+
 # ╔═╡ ea65cb90-1d49-11eb-2743-0d5882b43328
 begin
-	surface([A,B,C],legend=false, title="Trokut",color=:lightgray )
-	scatter!([A,B,C,S],series_annotations=["A","B","C","S"])
+	mesh3d([A,B,C],legend=false, title="Opisana kružnica",color=:lightgray )
+	scatter!([A,B,C],ms=2)
+	scatter!(S,color=:black,ms=2)
+	scatter!([(A+B)/2,(A+C)/2,(B+C)/2],ms=2)
+	plot!(xlabel="x",ylabel="y",zlabel="z")
 	# Vizualna provjera sijeku li se simetrale u istoj točki
-	plot!([A,S])
-	plot!([B,S])
-	plot!([C,S])
+	plot!([(A+B)/2,S])
+	plot!([(A+C)/2,S])
+	plot!([(B+C)/2,S])
+	# Crtanje kružnice
+    Cir=kružnica(A,B,C,S,r)
+	plot!(Cir)
+end
+
+# ╔═╡ 8ff034e0-1df1-11eb-35b4-9b9e3178bef9
+md"
+## Upisana kružnica
+
+Središte $S$ __upisane kružnice__ je sjecište __simetrala kutova__, a radijus $r$ je udaljenost od središta do bilo koje stranice.
+
+Vektor smjera simetrale kuta se računa kao zbroj jediničnih vektora priležnih stranica (dijagonala romba raspolavlja kut).  
+"
+
+# ╔═╡ af840200-1df1-11eb-2079-6f31dab59923
+function upisana_kružnica(A,B,C)
+	# Simetrala kuta α
+	sα=pravac(A,collect((B-A)/norm(B-A)+(C-A)/norm(C-A)))
+	# Simetrala kuta β
+	sβ=pravac(B,collect((A-B)/norm(A-B)+(C-B)/norm(C-B)))
+	# Simetrala kuta γ
+	sγ=pravac(C,collect((C-A)/norm(C-A)+(C-B)/norm(C-B)))
+
+	# Središte upisane kružnice
+	S=presjek(sα,sβ)
+	# Radijus upisane kružnice
+	# Okomica na stranicu AB kroz središte S
+	oAB=pravac(S,((B-A)×(C-A))×(B-A))
+	# Pravac kroz stranicu AB
+	pAB=pravac(A,collect(B-A))
+	# Sjecište okomice i stranice AB
+	T=presjek(oAB,pAB)
+	r=norm(S-T)
+	return S,r
+end
+
+# ╔═╡ 37382cf0-1dfa-11eb-0ff7-e16314375ea7
+Su,ru=upisana_kružnica(A,B,C)
+
+# ╔═╡ bc84dd80-1df1-11eb-30fd-45ff1ebe64d1
+begin
+	mesh3d([A,B,C],legend=false, title="Upisana kružnica",color=:lightgray )
+	scatter!([A,B,C],ms=2)
+	scatter!(Su,color=:black,ms=2)
+	plot!(xlabel="x",ylabel="y",zlabel="z")
+	# Vizualna provjera sijeku li se simetrale u istoj točki
+	plot!([A,Su])
+	plot!([B,Su])
+	plot!([C,Su])
+	# Crtanje kružnice
+	Cir₁=kružnica(A,B,C,Su,ru)
+	plot!(Cir₁)
 end
 
 # ╔═╡ Cell order:
 # ╟─be21625e-1cf1-11eb-2efb-0b857e0bbd1e
+# ╠═b40e846c-1cf2-11eb-0375-cd3f3e221358
 # ╠═adfa1406-1cf2-11eb-18c9-a58b9f9064c8
 # ╠═9bcc7de0-1d3e-11eb-1f26-49ae5603bd60
-# ╠═b40e846c-1cf2-11eb-0375-cd3f3e221358
 # ╠═1bed9df2-1cf3-11eb-3da5-0ff167b35323
 # ╟─52805212-1cf6-11eb-148c-b118898c3bd1
 # ╠═5e303fa0-1cf6-11eb-24f7-3b5da0b2957d
@@ -266,4 +364,10 @@ end
 # ╟─dd7c1700-1d48-11eb-3cd8-07985f0d50c5
 # ╠═184d7680-1d49-11eb-2505-b95fc1316ea0
 # ╠═dce70d80-1d49-11eb-2287-097c591556b3
+# ╟─3066e240-1e09-11eb-3960-cf7fcafd4afb
+# ╠═7cecba42-1e09-11eb-2c71-19ca6bb64aa1
 # ╠═ea65cb90-1d49-11eb-2743-0d5882b43328
+# ╟─8ff034e0-1df1-11eb-35b4-9b9e3178bef9
+# ╠═af840200-1df1-11eb-2079-6f31dab59923
+# ╠═37382cf0-1dfa-11eb-0ff7-e16314375ea7
+# ╠═bc84dd80-1df1-11eb-30fd-45ff1ebe64d1
