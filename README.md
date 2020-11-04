@@ -2,6 +2,10 @@
 
 Matematičke reaktivne bilježnice pisane koristeći [Pluto.jl](https://github.com/fonsp/Pluto.jl). Bilježnice su pisane u programskom jeziku [Julia](https://julialang.org).
 
+## Pregledavanje
+
+Bilježnice su dostupne na adresi [ivanslapnicar.github.io/Matematika/](https://ivanslapnicar.github.io/Matematika/).
+
 ## Korištenje
 
 * Preuzmite bilježnice (repozitorij) korištenjem `git` naredbe:
@@ -9,7 +13,7 @@ Matematičke reaktivne bilježnice pisane koristeći [Pluto.jl](https://github.c
 git clone https://github.com/ivanslapnicar/Matematika.git
 ```
 Ako niste upoznati s `git` alatom možete pogledati GitHubove [stranice za pomoć](https://help.github.com/articles/set-up-git/) ili direktno preuzeti bilježnice (repozitorij) kao zip datoteku.
-HTML verzije bilježnica nalaze se u driektoriju `Matematika/docs`
+HTML verzije bilježnica sada se nalaze u direktoriju `Matematika/docs`
 
 * Instalirajte [Julia-u](https://julialang.org/downloads/). U Julia terminalu izvedite naredbe
 ```
