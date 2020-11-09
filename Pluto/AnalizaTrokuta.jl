@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.12.6
+# v0.12.7
 
 using Markdown
 using InteractiveUtils
@@ -38,7 +38,7 @@ __Napomena__: Točke definiramo kao `Tuple()`, na primjer `T=(x,y,z)`. Radi rač
 # Zadajmo trokut ABC
 begin
 	A=(1,2,5)
-	B=(-1,0,-3)
+	B=(-2,0,-3)
 	C=(2,1,-1)
 end
 
@@ -150,7 +150,7 @@ function težište(A,B,C)
 	tB=pravac(B,collect(B₁-B))
 	# Težište je presjek težišnica
 	T=presjek(tA,tB)
-	return A₁,B₁,C₁,T,T
+	return A₁,B₁,C₁,T
 end
 
 # ╔═╡ 8590bc18-1cf7-11eb-302d-155630460d84
@@ -159,7 +159,8 @@ A₁,B₁,C₁,T=težište(A,B,C)
 # ╔═╡ 996e3846-1cf7-11eb-11dc-dfd833157463
 # Nacrtajmo polovišta nasuprotnih stranica i spojnice, te težište
 begin
-	scatter!([A₁,B₁,C₁],title="Težište",ms=2)
+	mesh3d([A,B,C],legend=false, title="Težište",color=:lightgray)
+	scatter!([A₁,B₁,C₁],ms=2)
 	scatter!(T,color=:black,ms=2)
 	plot!([A,A₁])
 	plot!([B,B₁])
