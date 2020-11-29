@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta name="viewport" content="width=device-width" />
+                <title>⚡ Pluto.jl ⚡</title>
+                <meta charset="utf-8" />
+
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fonsp/Pluto.jl@0.12.11/frontend/editor.css" type="text/css" />
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fonsp/Pluto.jl@0.12.11/frontend/treeview.css" type="text/css" />
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fonsp/Pluto.jl@0.12.11/frontend/hide-ui.css" type="text/css" />
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.58.1/lib/codemirror.min.css" type="text/css" />
+
+                <style id="MJX-SVG-styles">
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+</style>
+            </head>
+            <body>
+                <main><preamble><button class="runallchanged" title="Save and run all changed cells"><span></span></button></preamble><pluto-notebook id="aa078c20-323c-11eb-104f-2fcb75b6b8e6"><pluto-cell class="code_folded " id="aa073e00-323c-11eb-0297-83e3db12248d"><pluto-shoulder draggable="true" title="Drag to move cell"><button class="foldcode" title="Show/hide code"><span></span></button></pluto-shoulder><pluto-trafficlight></pluto-trafficlight><button class="add_cell before" title="Add cell"><span></span></button><pluto-output class="rich_output " mime="text/html"><assignee></assignee><div><div class="markdown"><h1>Opća sinusoida</h1>
+<p>Vizualizacija opće sinusoide i kosinusoide.</p>
+</div></div></pluto-output><pluto-runarea><button class="runcell" title="Run"><span></span></button><span class="runtime">6.4&nbsp;μs</span></pluto-runarea><button class="add_cell after" title="Add cell"><span></span></button></pluto-cell><pluto-cell class="" id="cc9d0080-323c-11eb-3a85-c90ff746ef6d"><pluto-shoulder draggable="true" title="Drag to move cell"><button class="foldcode" title="Show/hide code"><span></span></button></pluto-shoulder><pluto-trafficlight></pluto-trafficlight><button class="add_cell before" title="Add cell"><span></span></button><pluto-output class="scroll_y rich_output " mime="text/plain"><assignee></assignee><div></div></pluto-output><pluto-input><button class="delete_cell" title="Delete cell"><span></span></button><div class="CodeMirror cm-s-default CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 34.9166px; left: 164.05px;"><textarea style="position: absolute; bottom: -1em; padding: 0px; width: 1px; height: 1em; outline: currentcolor none medium;" autocorrect="off" autocapitalize="none" spellcheck="false" tabindex="0" wrap="off"></textarea></div><div class="CodeMirror-vscrollbar" tabindex="-1" cm-not-content="true"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-hscrollbar" tabindex="-1" cm-not-content="true"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1" draggable="true"><div class="CodeMirror-sizer" style="margin-left: 30px; margin-bottom: -9px; border-right-width: 41px; min-height: 23px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div style="position: relative; outline: currentcolor none medium;" role="presentation"><div class="CodeMirror-measure"><pre class="CodeMirror-line-like"><span>xxxxxxxxxx</span></pre><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>1</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors" style="visibility: hidden;"><div class="CodeMirror-cursor" style="left: 134.05px; top: 30.3333px; height: 15.1667px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation" style=""><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">begin</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">using</span> <span class="cm-variable">Plots</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">using</span> <span class="cm-variable">PlutoUI</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">end</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 41px; width: 1px; border-bottom: 0px solid transparent; top: 69px;"></div><div class="CodeMirror-gutters" style="height: 110px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 29px;"></div></div></div></div></pluto-input><pluto-runarea><button class="runcell" title="Run"><span></span></button><span class="runtime">121&nbsp;ms</span></pluto-runarea><button class="add_cell after" title="Add cell"><span></span></button></pluto-cell><pluto-cell class="" id="2ab1a092-323d-11eb-18f9-a360e9c13c31"><pluto-shoulder draggable="true" title="Drag to move cell"><button class="foldcode" title="Show/hide code"><span></span></button></pluto-shoulder><pluto-trafficlight></pluto-trafficlight><button class="add_cell before" title="Add cell"><span></span></button><pluto-output class="scroll_y " mime="text/plain"><assignee></assignee><div><pre><code>f (generic function with 1 method)</code></pre></div></pluto-output><pluto-input><button class="delete_cell" title="Delete cell"><span></span></button><div class="CodeMirror cm-s-default CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 19.75px; left: 164.05px;"><textarea style="position: absolute; bottom: -1em; padding: 0px; width: 1px; height: 1em; outline: currentcolor none medium;" autocorrect="off" autocapitalize="none" spellcheck="false" tabindex="0" wrap="off"></textarea></div><div class="CodeMirror-vscrollbar" tabindex="-1" cm-not-content="true"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-hscrollbar" tabindex="-1" cm-not-content="true"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1" draggable="true"><div class="CodeMirror-sizer" style="margin-left: 30px; margin-bottom: -9px; border-right-width: 41px; min-height: 23px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div style="position: relative; outline: currentcolor none medium;" role="presentation"><div class="CodeMirror-measure"><pre class="CodeMirror-line-like"><span>xxxxxxxxxx</span></pre><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>1</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors" style="visibility: hidden;"><div class="CodeMirror-cursor" style="left: 134.05px; top: 15.1667px; height: 15.1667px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation"><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-comment"># Probajte kosinus umjesto sinusa</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-def">f</span>(<span class="cm-variable">x</span>)<span class="cm-operator">=</span><span class="cm-variable">A</span><span class="cm-operator">*</span><span class="cm-builtin">sin</span>(<span class="cm-variable">ω</span><span class="cm-operator">*</span><span class="cm-variable">x</span><span class="cm-operator">+</span><span class="cm-variable">φ</span>)</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 41px; width: 1px; border-bottom: 0px solid transparent; top: 38px;"></div><div class="CodeMirror-gutters" style="height: 79px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 29px;"></div></div></div></div></pluto-input><pluto-runarea><button class="runcell" title="Run"><span></span></button><span class="runtime">22.0&nbsp;μs</span></pluto-runarea><button class="add_cell after" title="Add cell"><span></span></button></pluto-cell><pluto-cell class="" id="607227e2-323d-11eb-3a5f-2d5d34130b84"><pluto-shoulder draggable="true" title="Drag to move cell"><button class="foldcode" title="Show/hide code"><span></span></button></pluto-shoulder><pluto-trafficlight></pluto-trafficlight><button class="add_cell before" title="Add cell"><span></span></button><pluto-output class="rich_output " mime="text/html"><assignee></assignee><div><!--?xml version="1.0" encoding="utf-8"?-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="600" height="400" viewBox="0 0 2400 1600">
+<defs>
+  <clipPath id="clip780">
+    <rect x="0" y="0" width="2400" height="1600"></rect>
+  </clipPath>
+</defs>
+<path clip-path="url(#clip780)" d="
+M0 1600 L2400 1600 L2400 0 L0 0  Z
+  " fill="#ffffff" fill-rule="evenodd" fill-opacity="1"></path>
+<defs>
+  <clipPath id="clip781">
+    <rect x="480" y="0" width="1681" height="1600"></rect>
+  </clipPath>
+</defs>
+<path clip-path="url(#clip780)" d="
+M181.135 1486.45 L2352.76 1486.45 L2352.76 47.2441 L181.135 47.2441  Z
+  " fill="#ffffff" fill-rule="evenodd" fill-opacity="1"></path>
+<defs>
+  <clipPath id="clip782">
+    <rect x="181" y="47" width="2173" height="1440"></rect>
+  </clipPath>
+</defs>
+<polyline clip-path="url(#clip782)" style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none" points="
+  451.794,1486.45 451.794,47.2441 
+  "></polyline>
+<polyline clip-path="url(#clip782)" style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none" points="
+  859.37,1486.45 859.37,47.2441 
+  "></polyline>
+<polyline clip-path="url(#clip782)" style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none" points="
+  1266.95,1486.45 1266.95,47.2441 
+  "></polyline>
+<polyline clip-path="url(#clip782)" style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none" points="
+  1674.52,1486.45 1674.52,47.2441 
+  "></polyline>
+<polyline clip-path="url(#clip782)" style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none" points="
+  2082.1,1486.45 2082.1,47.2441 
+  "></polyline>
+<polyline clip-path="url(#clip780)" style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none" points="
+  181.135,1486.45 2352.76,1486.45 
+  "></polyline>
+<polyline clip-path="url(#clip780)" style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none" points="
+  451.794,1486.45 451.794,1469.18 
+  "></polyline>
+<polyline clip-path="url(#clip780)" style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none" points="
+  859.37,1486.45 859.37,1469.18 
+  "></polyline>
+<polyline clip-path="url(#clip780)" style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none" points="
+  1266.95,1486.45 1266.95,1469.18 
+  "></polyline>
+<polyline clip-path="url(#clip780)" style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none" points="
+  1674.52,1486.45 1674.52,1469.18 
+  "></polyline>
+<polyline clip-path="url(#clip780)" style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none" points="
+  2082.1,1486.45 2082.1,1469.18 
+  "></polyline>
+<path clip-path="url(#clip780)" d="M 0 0 M405.463 1530.29 L435.139 1530.29 L435.139 1534.23 L405.463 1534.23 L405.463 1530.29 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M440.255 1512.56 L458.611 1512.56 L458.611 1516.5 L444.537 1516.5 L444.537 1524.97 Q445.556 1524.62 446.574 1524.46 Q447.593 1524.27 448.611 1524.27 Q454.398 1524.27 457.778 1527.44 Q461.158 1530.62 461.158 1536.03 Q461.158 1541.61 457.685 1544.71 Q454.213 1547.79 447.894 1547.79 Q445.718 1547.79 443.449 1547.42 Q441.204 1547.05 438.797 1546.31 L438.797 1541.61 Q440.88 1542.74 443.102 1543.3 Q445.324 1543.86 447.801 1543.86 Q451.806 1543.86 454.144 1541.75 Q456.482 1539.64 456.482 1536.03 Q456.482 1532.42 454.144 1530.31 Q451.806 1528.21 447.801 1528.21 Q445.926 1528.21 444.051 1528.62 Q442.199 1529.04 440.255 1529.92 L440.255 1512.56 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M466.227 1541.24 L471.111 1541.24 L471.111 1547.12 L466.227 1547.12 L466.227 1541.24 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M486.181 1515.64 Q482.569 1515.64 480.741 1519.2 Q478.935 1522.75 478.935 1529.87 Q478.935 1536.98 480.741 1540.55 Q482.569 1544.09 486.181 1544.09 Q489.815 1544.09 491.62 1540.55 Q493.449 1536.98 493.449 1529.87 Q493.449 1522.75 491.62 1519.2 Q489.815 1515.64 486.181 1515.64 M486.181 1511.93 Q491.991 1511.93 495.046 1516.54 Q498.125 1521.12 498.125 1529.87 Q498.125 1538.6 495.046 1543.21 Q491.991 1547.79 486.181 1547.79 Q480.37 1547.79 477.292 1543.21 Q474.236 1538.6 474.236 1529.87 Q474.236 1521.12 477.292 1516.54 Q480.37 1511.93 486.181 1511.93 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M813.838 1530.29 L843.513 1530.29 L843.513 1534.23 L813.838 1534.23 L813.838 1530.29 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M852.611 1543.18 L868.93 1543.18 L868.93 1547.12 L846.986 1547.12 L846.986 1543.18 Q849.648 1540.43 854.231 1535.8 Q858.837 1531.15 860.018 1529.81 Q862.263 1527.28 863.143 1525.55 Q864.046 1523.79 864.046 1522.1 Q864.046 1519.34 862.101 1517.61 Q860.18 1515.87 857.078 1515.87 Q854.879 1515.87 852.425 1516.63 Q849.995 1517.4 847.217 1518.95 L847.217 1514.23 Q850.041 1513.09 852.495 1512.51 Q854.949 1511.93 856.986 1511.93 Q862.356 1511.93 865.55 1514.62 Q868.745 1517.31 868.745 1521.8 Q868.745 1523.93 867.935 1525.85 Q867.148 1527.74 865.041 1530.34 Q864.462 1531.01 861.361 1534.23 Q858.259 1537.42 852.611 1543.18 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M873.999 1541.24 L878.884 1541.24 L878.884 1547.12 L873.999 1547.12 L873.999 1541.24 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M883.999 1512.56 L902.356 1512.56 L902.356 1516.5 L888.282 1516.5 L888.282 1524.97 Q889.3 1524.62 890.319 1524.46 Q891.337 1524.27 892.356 1524.27 Q898.143 1524.27 901.522 1527.44 Q904.902 1530.62 904.902 1536.03 Q904.902 1541.61 901.43 1544.71 Q897.958 1547.79 891.638 1547.79 Q889.462 1547.79 887.194 1547.42 Q884.948 1547.05 882.541 1546.31 L882.541 1541.61 Q884.624 1542.74 886.847 1543.3 Q889.069 1543.86 891.546 1543.86 Q895.55 1543.86 897.888 1541.75 Q900.226 1539.64 900.226 1536.03 Q900.226 1532.42 897.888 1530.31 Q895.55 1528.21 891.546 1528.21 Q889.671 1528.21 887.796 1528.62 Q885.944 1529.04 883.999 1529.92 L883.999 1512.56 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M1248.46 1515.64 Q1244.85 1515.64 1243.02 1519.2 Q1241.22 1522.75 1241.22 1529.87 Q1241.22 1536.98 1243.02 1540.55 Q1244.85 1544.09 1248.46 1544.09 Q1252.1 1544.09 1253.9 1540.55 Q1255.73 1536.98 1255.73 1529.87 Q1255.73 1522.75 1253.9 1519.2 Q1252.1 1515.64 1248.46 1515.64 M1248.46 1511.93 Q1254.27 1511.93 1257.33 1516.54 Q1260.41 1521.12 1260.41 1529.87 Q1260.41 1538.6 1257.33 1543.21 Q1254.27 1547.79 1248.46 1547.79 Q1242.65 1547.79 1239.57 1543.21 Q1236.52 1538.6 1236.52 1529.87 Q1236.52 1521.12 1239.57 1516.54 Q1242.65 1511.93 1248.46 1511.93 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M1265.48 1541.24 L1270.36 1541.24 L1270.36 1547.12 L1265.48 1547.12 L1265.48 1541.24 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M1285.43 1515.64 Q1281.82 1515.64 1279.99 1519.2 Q1278.18 1522.75 1278.18 1529.87 Q1278.18 1536.98 1279.99 1540.55 Q1281.82 1544.09 1285.43 1544.09 Q1289.06 1544.09 1290.87 1540.55 Q1292.7 1536.98 1292.7 1529.87 Q1292.7 1522.75 1290.87 1519.2 Q1289.06 1515.64 1285.43 1515.64 M1285.43 1511.93 Q1291.24 1511.93 1294.29 1516.54 Q1297.37 1521.12 1297.37 1529.87 Q1297.37 1538.6 1294.29 1543.21 Q1291.24 1547.79 1285.43 1547.79 Q1279.62 1547.79 1276.54 1543.21 Q1273.48 1538.6 1273.48 1529.87 Q1273.48 1521.12 1276.54 1516.54 Q1279.62 1511.93 1285.43 1511.93 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M1651.19 1543.18 L1667.51 1543.18 L1667.51 1547.12 L1645.56 1547.12 L1645.56 1543.18 Q1648.23 1540.43 1652.81 1535.8 Q1657.41 1531.15 1658.6 1529.81 Q1660.84 1527.28 1661.72 1525.55 Q1662.62 1523.79 1662.62 1522.1 Q1662.62 1519.34 1660.68 1517.61 Q1658.76 1515.87 1655.66 1515.87 Q1653.46 1515.87 1651 1516.63 Q1648.57 1517.4 1645.79 1518.95 L1645.79 1514.23 Q1648.62 1513.09 1651.07 1512.51 Q1653.53 1511.93 1655.56 1511.93 Q1660.93 1511.93 1664.13 1514.62 Q1667.32 1517.31 1667.32 1521.8 Q1667.32 1523.93 1666.51 1525.85 Q1665.72 1527.74 1663.62 1530.34 Q1663.04 1531.01 1659.94 1534.23 Q1656.84 1537.42 1651.19 1543.18 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M1672.58 1541.24 L1677.46 1541.24 L1677.46 1547.12 L1672.58 1547.12 L1672.58 1541.24 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M1682.58 1512.56 L1700.93 1512.56 L1700.93 1516.5 L1686.86 1516.5 L1686.86 1524.97 Q1687.88 1524.62 1688.9 1524.46 Q1689.91 1524.27 1690.93 1524.27 Q1696.72 1524.27 1700.1 1527.44 Q1703.48 1530.62 1703.48 1536.03 Q1703.48 1541.61 1700.01 1544.71 Q1696.53 1547.79 1690.22 1547.79 Q1688.04 1547.79 1685.77 1547.42 Q1683.53 1547.05 1681.12 1546.31 L1681.12 1541.61 Q1683.2 1542.74 1685.42 1543.3 Q1687.65 1543.86 1690.12 1543.86 Q1694.13 1543.86 1696.47 1541.75 Q1698.8 1539.64 1698.8 1536.03 Q1698.8 1532.42 1696.47 1530.31 Q1694.13 1528.21 1690.12 1528.21 Q1688.25 1528.21 1686.37 1528.62 Q1684.52 1529.04 1682.58 1529.92 L1682.58 1512.56 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M2053.89 1512.56 L2072.25 1512.56 L2072.25 1516.5 L2058.17 1516.5 L2058.17 1524.97 Q2059.19 1524.62 2060.21 1524.46 Q2061.23 1524.27 2062.25 1524.27 Q2068.03 1524.27 2071.41 1527.44 Q2074.79 1530.62 2074.79 1536.03 Q2074.79 1541.61 2071.32 1544.71 Q2067.85 1547.79 2061.53 1547.79 Q2059.35 1547.79 2057.09 1547.42 Q2054.84 1547.05 2052.43 1546.31 L2052.43 1541.61 Q2054.52 1542.74 2056.74 1543.3 Q2058.96 1543.86 2061.44 1543.86 Q2065.44 1543.86 2067.78 1541.75 Q2070.12 1539.64 2070.12 1536.03 Q2070.12 1532.42 2067.78 1530.31 Q2065.44 1528.21 2061.44 1528.21 Q2059.56 1528.21 2057.69 1528.62 Q2055.84 1529.04 2053.89 1529.92 L2053.89 1512.56 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M2079.86 1541.24 L2084.75 1541.24 L2084.75 1547.12 L2079.86 1547.12 L2079.86 1541.24 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M2099.82 1515.64 Q2096.21 1515.64 2094.38 1519.2 Q2092.57 1522.75 2092.57 1529.87 Q2092.57 1536.98 2094.38 1540.55 Q2096.21 1544.09 2099.82 1544.09 Q2103.45 1544.09 2105.26 1540.55 Q2107.09 1536.98 2107.09 1529.87 Q2107.09 1522.75 2105.26 1519.2 Q2103.45 1515.64 2099.82 1515.64 M2099.82 1511.93 Q2105.63 1511.93 2108.68 1516.54 Q2111.76 1521.12 2111.76 1529.87 Q2111.76 1538.6 2108.68 1543.21 Q2105.63 1547.79 2099.82 1547.79 Q2094.01 1547.79 2090.93 1543.21 Q2087.87 1538.6 2087.87 1529.87 Q2087.87 1521.12 2090.93 1516.54 Q2094.01 1511.93 2099.82 1511.93 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><polyline clip-path="url(#clip782)" style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none" points="
+  181.135,1445.72 2352.76,1445.72 
+  "></polyline>
+<polyline clip-path="url(#clip782)" style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none" points="
+  181.135,1106.28 2352.76,1106.28 
+  "></polyline>
+<polyline clip-path="url(#clip782)" style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none" points="
+  181.135,766.846 2352.76,766.846 
+  "></polyline>
+<polyline clip-path="url(#clip782)" style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none" points="
+  181.135,427.41 2352.76,427.41 
+  "></polyline>
+<polyline clip-path="url(#clip782)" style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none" points="
+  181.135,87.9731 2352.76,87.9731 
+  "></polyline>
+<polyline clip-path="url(#clip780)" style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none" points="
+  181.135,1486.45 181.135,47.2441 
+  "></polyline>
+<polyline clip-path="url(#clip780)" style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none" points="
+  181.135,1445.72 207.195,1445.72 
+  "></polyline>
+<polyline clip-path="url(#clip780)" style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none" points="
+  181.135,1106.28 207.195,1106.28 
+  "></polyline>
+<polyline clip-path="url(#clip780)" style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none" points="
+  181.135,766.846 207.195,766.846 
+  "></polyline>
+<polyline clip-path="url(#clip780)" style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none" points="
+  181.135,427.41 207.195,427.41 
+  "></polyline>
+<polyline clip-path="url(#clip780)" style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none" points="
+  181.135,87.9731 207.195,87.9731 
+  "></polyline>
+<path clip-path="url(#clip780)" d="M 0 0 M50.9921 1446.17 L80.6679 1446.17 L80.6679 1450.11 L50.9921 1450.11 L50.9921 1446.17 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M95.7373 1431.52 Q92.1262 1431.52 90.2975 1435.08 Q88.4919 1438.62 88.4919 1445.75 Q88.4919 1452.86 90.2975 1456.43 Q92.1262 1459.97 95.7373 1459.97 Q99.3715 1459.97 101.177 1456.43 Q103.006 1452.86 103.006 1445.75 Q103.006 1438.62 101.177 1435.08 Q99.3715 1431.52 95.7373 1431.52 M95.7373 1427.81 Q101.547 1427.81 104.603 1432.42 Q107.682 1437 107.682 1445.75 Q107.682 1454.48 104.603 1459.09 Q101.547 1463.67 95.7373 1463.67 Q89.9271 1463.67 86.8484 1459.09 Q83.7929 1454.48 83.7929 1445.75 Q83.7929 1437 86.8484 1432.42 Q89.9271 1427.81 95.7373 1427.81 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M112.751 1457.12 L117.635 1457.12 L117.635 1463 L112.751 1463 L112.751 1457.12 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M135.552 1432.51 L123.746 1450.96 L135.552 1450.96 L135.552 1432.51 M134.325 1428.44 L140.205 1428.44 L140.205 1450.96 L145.135 1450.96 L145.135 1454.85 L140.205 1454.85 L140.205 1463 L135.552 1463 L135.552 1454.85 L119.95 1454.85 L119.95 1450.34 L134.325 1428.44 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M53.0754 1106.73 L82.7512 1106.73 L82.7512 1110.67 L53.0754 1110.67 L53.0754 1106.73 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M97.8206 1092.08 Q94.2095 1092.08 92.3808 1095.65 Q90.5752 1099.19 90.5752 1106.32 Q90.5752 1113.42 92.3808 1116.99 Q94.2095 1120.53 97.8206 1120.53 Q101.455 1120.53 103.26 1116.99 Q105.089 1113.42 105.089 1106.32 Q105.089 1099.19 103.26 1095.65 Q101.455 1092.08 97.8206 1092.08 M97.8206 1088.38 Q103.631 1088.38 106.686 1092.98 Q109.765 1097.57 109.765 1106.32 Q109.765 1115.04 106.686 1119.65 Q103.631 1124.23 97.8206 1124.23 Q92.0104 1124.23 88.9317 1119.65 Q85.8762 1115.04 85.8762 1106.32 Q85.8762 1097.57 88.9317 1092.98 Q92.0104 1088.38 97.8206 1088.38 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M114.834 1117.68 L119.719 1117.68 L119.719 1123.56 L114.834 1123.56 L114.834 1117.68 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M128.816 1119.63 L145.135 1119.63 L145.135 1123.56 L123.191 1123.56 L123.191 1119.63 Q125.853 1116.87 130.436 1112.24 Q135.043 1107.59 136.223 1106.25 Q138.469 1103.73 139.348 1101.99 Q140.251 1100.23 140.251 1098.54 Q140.251 1095.79 138.306 1094.05 Q136.385 1092.31 133.283 1092.31 Q131.084 1092.31 128.631 1093.08 Q126.2 1093.84 123.422 1095.39 L123.422 1090.67 Q126.246 1089.54 128.7 1088.96 Q131.154 1088.38 133.191 1088.38 Q138.561 1088.38 141.756 1091.06 Q144.95 1093.75 144.95 1098.24 Q144.95 1100.37 144.14 1102.29 Q143.353 1104.19 141.246 1106.78 Q140.668 1107.45 137.566 1110.67 Q134.464 1113.86 128.816 1119.63 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M96.2234 752.645 Q92.6123 752.645 90.7836 756.21 Q88.978 759.751 88.978 766.881 Q88.978 773.987 90.7836 777.552 Q92.6123 781.094 96.2234 781.094 Q99.8576 781.094 101.663 777.552 Q103.492 773.987 103.492 766.881 Q103.492 759.751 101.663 756.21 Q99.8576 752.645 96.2234 752.645 M96.2234 748.941 Q102.034 748.941 105.089 753.548 Q108.168 758.131 108.168 766.881 Q108.168 775.608 105.089 780.214 Q102.034 784.798 96.2234 784.798 Q90.4132 784.798 87.3345 780.214 Q84.279 775.608 84.279 766.881 Q84.279 758.131 87.3345 753.548 Q90.4132 748.941 96.2234 748.941 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M113.237 778.247 L118.121 778.247 L118.121 784.126 L113.237 784.126 L113.237 778.247 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M133.191 752.645 Q129.58 752.645 127.751 756.21 Q125.945 759.751 125.945 766.881 Q125.945 773.987 127.751 777.552 Q129.58 781.094 133.191 781.094 Q136.825 781.094 138.631 777.552 Q140.459 773.987 140.459 766.881 Q140.459 759.751 138.631 756.21 Q136.825 752.645 133.191 752.645 M133.191 748.941 Q139.001 748.941 142.056 753.548 Q145.135 758.131 145.135 766.881 Q145.135 775.608 142.056 780.214 Q139.001 784.798 133.191 784.798 Q127.381 784.798 124.302 780.214 Q121.246 775.608 121.246 766.881 Q121.246 758.131 124.302 753.548 Q127.381 748.941 133.191 748.941 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M97.8206 413.208 Q94.2095 413.208 92.3808 416.773 Q90.5752 420.315 90.5752 427.444 Q90.5752 434.551 92.3808 438.116 Q94.2095 441.657 97.8206 441.657 Q101.455 441.657 103.26 438.116 Q105.089 434.551 105.089 427.444 Q105.089 420.315 103.26 416.773 Q101.455 413.208 97.8206 413.208 M97.8206 409.505 Q103.631 409.505 106.686 414.111 Q109.765 418.694 109.765 427.444 Q109.765 436.171 106.686 440.778 Q103.631 445.361 97.8206 445.361 Q92.0104 445.361 88.9317 440.778 Q85.8762 436.171 85.8762 427.444 Q85.8762 418.694 88.9317 414.111 Q92.0104 409.505 97.8206 409.505 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M114.834 438.81 L119.719 438.81 L119.719 444.69 L114.834 444.69 L114.834 438.81 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M128.816 440.755 L145.135 440.755 L145.135 444.69 L123.191 444.69 L123.191 440.755 Q125.853 438 130.436 433.37 Q135.043 428.718 136.223 427.375 Q138.469 424.852 139.348 423.116 Q140.251 421.356 140.251 419.667 Q140.251 416.912 138.306 415.176 Q136.385 413.44 133.283 413.44 Q131.084 413.44 128.631 414.204 Q126.2 414.968 123.422 416.519 L123.422 411.796 Q126.246 410.662 128.7 410.083 Q131.154 409.505 133.191 409.505 Q138.561 409.505 141.756 412.19 Q144.95 414.875 144.95 419.366 Q144.95 421.495 144.14 423.417 Q143.353 425.315 141.246 427.907 Q140.668 428.579 137.566 431.796 Q134.464 434.991 128.816 440.755 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M95.7373 73.7718 Q92.1262 73.7718 90.2975 77.3366 Q88.4919 80.8782 88.4919 88.0078 Q88.4919 95.1143 90.2975 98.679 Q92.1262 102.221 95.7373 102.221 Q99.3715 102.221 101.177 98.679 Q103.006 95.1143 103.006 88.0078 Q103.006 80.8782 101.177 77.3366 Q99.3715 73.7718 95.7373 73.7718 M95.7373 70.0681 Q101.547 70.0681 104.603 74.6745 Q107.682 79.2579 107.682 88.0078 Q107.682 96.7346 104.603 101.341 Q101.547 105.924 95.7373 105.924 Q89.9271 105.924 86.8484 101.341 Q83.7929 96.7346 83.7929 88.0078 Q83.7929 79.2579 86.8484 74.6745 Q89.9271 70.0681 95.7373 70.0681 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M112.751 99.3735 L117.635 99.3735 L117.635 105.253 L112.751 105.253 L112.751 99.3735 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><path clip-path="url(#clip780)" d="M 0 0 M135.552 74.7671 L123.746 93.2161 L135.552 93.2161 L135.552 74.7671 M134.325 70.6931 L140.205 70.6931 L140.205 93.2161 L145.135 93.2161 L145.135 97.105 L140.205 97.105 L140.205 105.253 L135.552 105.253 L135.552 97.105 L119.95 97.105 L119.95 92.5911 L134.325 70.6931 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1"></path><polyline clip-path="url(#clip782)" style="stroke:#009af9; stroke-width:4; stroke-opacity:1; fill:none" points="
+  242.596,1149.17 247.598,1128.27 252.6,1106.87 257.602,1085.01 262.603,1062.72 308.852,841.74 355.101,612.161 378.226,502.428 401.35,400.336 424.475,308.838 
+  447.599,230.576 461.496,190.873 475.393,157.192 489.289,129.883 503.186,109.234 517.083,95.4585 530.98,88.7021 544.877,89.035 558.774,96.4537 570.523,108.199 
+  582.273,124.867 594.022,146.335 605.772,172.44 629.271,237.752 652.77,318.853 678.297,422.013 703.824,537.31 729.351,660.688 754.877,787.802 778.411,904.439 
+  801.944,1016.96 825.477,1121.99 849.011,1216.4 861.626,1261.63 874.241,1302.59 886.856,1338.95 899.471,1370.37 912.086,1396.59 924.702,1417.39 937.317,1432.58 
+  949.932,1442.04 964.548,1445.72 979.164,1441.54 993.779,1429.57 1008.4,1409.94 1023.01,1382.87 1037.63,1348.67 1052.24,1307.75 1066.86,1260.58 1092.84,1163.03 
+  1118.81,1051.04 1144.79,928.689 1170.77,800.44 1216.33,575.425 1261.89,371.737 1274.31,322.996 1286.73,277.961 1299.14,237.008 1311.56,200.479 1323.98,168.678 
+  1336.4,141.872 1348.82,120.283 1361.24,104.093 1373.73,93.3897 1386.22,88.3761 1398.71,89.0946 1411.2,95.5392 1423.7,107.655 1436.19,125.341 1448.68,148.446 
+  1461.17,176.776 1474.98,213.89 1488.8,256.714 1502.61,304.806 1516.42,357.669 1544.04,475.48 1571.66,605.296 1624.23,866.038 1676.79,1112.12 1690.46,1169.06 
+  1704.12,1221.94 1717.79,1270.22 1731.45,1313.41 1745.11,1351.08 1758.78,1382.84 1772.44,1408.38 1786.11,1427.43 1797.61,1438.3 1809.11,1444.36 1820.61,1445.57 
+  1832.11,1441.91 1843.62,1433.42 1855.12,1420.15 1866.62,1402.2 1878.12,1379.71 1892.17,1346.31 1906.21,1306.72 1920.25,1261.37 1934.29,1210.74 1962.38,1095.86 
+  1990.47,966.975 2043.27,706.224 2096.07,454.517 2117.22,364.843 2138.37,284.891 2159.52,216.594 2180.66,161.603 2201.81,121.249 2222.96,96.5075 2244.11,87.9763 
+  2265.26,95.862 2271.77,101.574 2278.28,108.814 2284.79,117.563 2291.29,127.803 
+  "></polyline>
+</svg>
+</div></pluto-output><pluto-input><button class="delete_cell" title="Delete cell"><span></span></button><div class="CodeMirror cm-s-default CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4.58334px; left: 133.45px;"><textarea style="position: absolute; bottom: -1em; padding: 0px; width: 1px; height: 1em; outline: currentcolor none medium;" autocorrect="off" autocapitalize="none" spellcheck="false" tabindex="0" wrap="off"></textarea></div><div class="CodeMirror-vscrollbar" tabindex="-1" cm-not-content="true"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-hscrollbar" tabindex="-1" cm-not-content="true"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1" draggable="true"><div class="CodeMirror-sizer" style="margin-left: 30px; margin-bottom: -9px; border-right-width: 41px; min-height: 23px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div style="position: relative; outline: currentcolor none medium;" role="presentation"><div class="CodeMirror-measure"><pre class="CodeMirror-line-like"><span>xxxxxxxxxx</span></pre><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>1</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors" style="visibility: hidden;"><div class="CodeMirror-cursor" style="left: 103.45px; top: 0px; height: 15.1667px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation"><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-builtin">plot</span>(<span class="cm-variable">f</span>,<span class="cm-operator">-</span><span class="cm-number">2</span><span class="cm-variable">π</span>,<span class="cm-number">2</span><span class="cm-variable">π</span>,<span class="cm-variable">legend</span><span class="cm-operator">=</span><span class="cm-builtin">false</span>)</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 41px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="height: 64px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 29px;"></div></div></div></div></pluto-input><pluto-runarea><button class="runcell" title="Run"><span></span></button><span class="runtime">452&nbsp;ms</span></pluto-runarea><button class="add_cell after" title="Add cell"><span></span></button></pluto-cell><pluto-cell class="" id="e6afb200-323d-11eb-0c1d-89d62fc72af8"><pluto-shoulder draggable="true" title="Drag to move cell"><button class="foldcode" title="Show/hide code"><span></span></button></pluto-shoulder><pluto-trafficlight></pluto-trafficlight><button class="add_cell before" title="Add cell"><span></span></button><pluto-output class="rich_output " mime="text/html"><assignee></assignee><div><div class="markdown"><bond def="A"><input type="range" min="0.4" step="0.2" max="4.0" value="0.4"></bond>
+<bond def="ω"><input type="range" min="0.2" step="1.0" max="2.2" value="0.2"></bond>
+<bond def="φ"><input type="range" min="-3.141592653589793" step="0.2" max="3.058407346410207" value="-3.141592653589793"></bond>
+</div></div></pluto-output><pluto-input><button class="delete_cell" title="Delete cell"><span></span></button><div class="CodeMirror cm-s-default CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 34.9166px; left: 202.3px;"><textarea style="position: absolute; bottom: -1em; padding: 0px; width: 1px; height: 1em; outline: currentcolor none medium;" autocorrect="off" autocapitalize="none" spellcheck="false" tabindex="0" wrap="off"></textarea></div><div class="CodeMirror-vscrollbar" tabindex="-1" cm-not-content="true"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-hscrollbar" tabindex="-1" cm-not-content="true"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1" draggable="true"><div class="CodeMirror-sizer" style="margin-left: 30px; margin-bottom: -9px; border-right-width: 41px; min-height: 23px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div style="position: relative; outline: currentcolor none medium;" role="presentation"><div class="CodeMirror-measure"><pre class="CodeMirror-line-like"><span>xxxxxxxxxx</span></pre><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>5</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors" style="visibility: hidden;"><div class="CodeMirror-cursor" style="left: 172.3px; top: 30.3333px; height: 15.1667px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation" style=""><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-string">md"</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-string">$(@bind A Slider(0.4:0.2:4))</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-string">$(@bind ω Slider(0.2:π))</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-string">$(@bind φ Slider(-π:0.2:π))</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-string">"</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 41px; width: 1px; border-bottom: 0px solid transparent; top: 84px;"></div><div class="CodeMirror-gutters" style="height: 125px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 29px;"></div></div></div></div></pluto-input><pluto-runarea><button class="runcell" title="Run"><span></span></button><span class="runtime">88.7&nbsp;μs</span></pluto-runarea><button class="add_cell after" title="Add cell"><span></span></button></pluto-cell></pluto-notebook><dropruler style=""></dropruler></main>
+                <svg style="display: none;" id="MJX-SVG-global-cache"><defs></defs></svg>
+            </body>
+            </html>
+        
