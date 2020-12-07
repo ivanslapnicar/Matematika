@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.12.12
+# v0.12.16
 
 using Markdown
 using InteractiveUtils
@@ -119,9 +119,17 @@ x₁=e^(π/6)
 # ╔═╡ b4162a60-3876-11eb-35cf-7b9f19aa5dee
 begin
 	# Funkcija i derivacija
-	f₁(x)=sin(log(x))^(1/3)
-	df₁=(1/3)*(sin(log(x)))^(-2/3)*cos(log(x))*(1/x)
+	f₁(x)=sin(log(x))^(1//3)
+	# df₁=(1//3)*(sin(log(x)))^(-2//3)*cos(log(x))*(1/x)
+	df₁=diff(f₁(x),x)
 end
+
+# ╔═╡ e40cf580-3891-11eb-18f5-91f5f4fde6aa
+md"
+ $f'(x)$ je 
+
+$\frac{\cos{\left(\log{\left(x \right)} \right)}}{3 x \sin^{\frac{2}{3}}{\left(\log{\left(x \right)} \right)}}$
+"
 
 # ╔═╡ 10270b30-3877-11eb-1ebd-0191994f7ce9
 begin
@@ -164,6 +172,7 @@ end
 # ╠═07bf0e32-3876-11eb-2c36-c7678874f2da
 # ╠═f4bce000-3875-11eb-189d-5ff380c98ab7
 # ╠═b4162a60-3876-11eb-35cf-7b9f19aa5dee
+# ╠═e40cf580-3891-11eb-18f5-91f5f4fde6aa
 # ╠═10270b30-3877-11eb-1ebd-0191994f7ce9
 # ╠═1729d2e0-3878-11eb-20d4-a72381e5183f
 # ╠═cd251cf0-3876-11eb-117b-19ac57df203c
