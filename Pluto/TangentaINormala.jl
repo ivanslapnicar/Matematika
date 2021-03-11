@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.12.16
+# v0.12.21
 
 using Markdown
 using InteractiveUtils
@@ -27,7 +27,7 @@ using Base.MathConstants
 md"
 # Tangenta i normala
 
-Računanuje i vizualizacija tangente i normale.
+Računanje i vizualizacija tangente i normale.
 "
 
 # ╔═╡ ebd34e00-3813-11eb-1679-ab5dd54dd0e0
@@ -172,7 +172,7 @@ end
 # ╠═07bf0e32-3876-11eb-2c36-c7678874f2da
 # ╠═f4bce000-3875-11eb-189d-5ff380c98ab7
 # ╠═b4162a60-3876-11eb-35cf-7b9f19aa5dee
-# ╠═e40cf580-3891-11eb-18f5-91f5f4fde6aa
+# ╟─e40cf580-3891-11eb-18f5-91f5f4fde6aa
 # ╠═10270b30-3877-11eb-1ebd-0191994f7ce9
 # ╠═1729d2e0-3878-11eb-20d4-a72381e5183f
 # ╠═cd251cf0-3876-11eb-117b-19ac57df203c
