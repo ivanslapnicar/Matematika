@@ -38,8 +38,9 @@ x=symbols("x", real=true);
 # Funkcija
 f(x)=sin(x)
 
-# ╔═╡ 7ff6b1e0-3813-11eb-1ab5-19fe919036ec
-df=diff(f(x),x);
+# ╔═╡ 78797d12-91ff-11eb-3630-e1cbf90810e6
+# Definicija derivacije f'
+Base.adjoint(f::Function)=diff(f(x),x)
 
 # ╔═╡ 607227e2-323d-11eb-3a5f-2d5d34130b84
 begin
@@ -49,29 +50,26 @@ begin
 	dx=5.0
 end
 
-# ╔═╡ 47854920-3818-11eb-0c5c-3564f8022020
-@bind x₀ Slider(a:0.1:b)
-
-# ╔═╡ ca9006b0-3814-11eb-1f33-0bb96d19ad33
-begin
-	# x₀ i y₀=f(x₀)
-	y₀=f(x₀)
-	x₀,y₀
-end
-
 # ╔═╡ e07f69c0-3814-11eb-180f-351a75f67a3b
 # Tangenta
-t(x)=df(x₀)*(x-x₀)+y₀
+tangenta(f,x₀)= x -> f'(x₀)*(x-x₀)+f(x₀)
 
 # ╔═╡ 8b7bb0e0-3815-11eb-3511-dbbf3e026bc3
 # Normala
-n(x)=(-1.0/df(x₀))*(x-x₀)+y₀
+normala(f,x₀)=x -> (-1.0/f'(x₀))*(x-x₀)+f(x₀)
+
+# ╔═╡ 47854920-3818-11eb-0c5c-3564f8022020
+@bind x₀ Slider(a:0.1:b)
 
 # ╔═╡ a0e3d7fe-3814-11eb-2b06-2746249700e1
 begin
-	plot(f,xlims = (x₀-dx,x₀+dx), ylims = (y₀-dx,y₀+dx), aspect_ratio=1,label="Funkcija")
-	plot!(t,xlims = (x₀-dx,x₀+dx), ylims = (y₀-dx,y₀+dx), label="Tangenta")
-	plot!(n,xlims = (x₀-dx,x₀+dx), ylims = (y₀-dx,y₀+dx), label="Normala")
+	y₀=f(x₀)
+	plot(f,xlims = (x₀-dx,x₀+dx), ylims = (y₀-dx,y₀+dx), aspect_ratio=1,
+		label="Funkcija")
+	plot!(tangenta(f,x₀), xlims = (x₀-dx,x₀+dx), ylims = (y₀-dx,y₀+dx),
+		label="Tangenta")
+	plot!(normala(f,x₀), xlims = (x₀-dx,x₀+dx), ylims = (y₀-dx,y₀+dx),
+		label="Normala")
 end
 
 # ╔═╡ bca6e1e0-3873-11eb-2bc9-95d05556c02a
@@ -117,12 +115,7 @@ e
 x₁=e^(π/6)
 
 # ╔═╡ b4162a60-3876-11eb-35cf-7b9f19aa5dee
-begin
-	# Funkcija i derivacija
-	f₁(x)=sin(log(x))^(1//3)
-	# df₁=(1//3)*(sin(log(x)))^(-2//3)*cos(log(x))*(1/x)
-	df₁=diff(f₁(x),x)
-end
+f₁(x)=sin(log(x))^(1//3)
 
 # ╔═╡ e40cf580-3891-11eb-18f5-91f5f4fde6aa
 md"
@@ -131,26 +124,15 @@ md"
 $\frac{\cos{\left(\log{\left(x \right)} \right)}}{3 x \sin^{\frac{2}{3}}{\left(\log{\left(x \right)} \right)}}$
 "
 
-# ╔═╡ 10270b30-3877-11eb-1ebd-0191994f7ce9
-begin
-	# Vrijednosti funkcije i derivacije u točki x₁
-	y₁=f₁(x₁)
-	dy₁=df₁(x₁)
-end
-
-# ╔═╡ 1729d2e0-3878-11eb-20d4-a72381e5183f
-begin
-	# Tangenta i normala
-	t₁(x)=dy₁*(x-x₁)+y₁
-	n₁(x)=(-1/dy₁)*(x-x₁)+y₁
-end
+# ╔═╡ 0a888a34-9202-11eb-1140-ed3b2e3ee76d
+f₁'
 
 # ╔═╡ cd251cf0-3876-11eb-117b-19ac57df203c
 begin
 	# Crtanje
 	plot(f₁,1,3,label="Funkcija")
-	plot!(t₁,1,3,label="Tangenta")
-	plot!(n₁,1,3,label="Normala",ylim=(0,2),aspect_ratio=1)
+	plot!(tangenta(f₁,x₁),1,3,label="Tangenta")
+	plot!(normala(f₁,x₁),1,3,label="Normala",ylim=(0,2),aspect_ratio=1)
 end
 
 # ╔═╡ Cell order:
@@ -158,9 +140,8 @@ end
 # ╠═cc9d0080-323c-11eb-3a85-c90ff746ef6d
 # ╠═ebd34e00-3813-11eb-1679-ab5dd54dd0e0
 # ╠═2ab1a092-323d-11eb-18f9-a360e9c13c31
-# ╠═7ff6b1e0-3813-11eb-1ab5-19fe919036ec
+# ╠═78797d12-91ff-11eb-3630-e1cbf90810e6
 # ╠═607227e2-323d-11eb-3a5f-2d5d34130b84
-# ╠═ca9006b0-3814-11eb-1f33-0bb96d19ad33
 # ╠═e07f69c0-3814-11eb-180f-351a75f67a3b
 # ╠═8b7bb0e0-3815-11eb-3511-dbbf3e026bc3
 # ╠═a0e3d7fe-3814-11eb-2b06-2746249700e1
@@ -173,6 +154,5 @@ end
 # ╠═f4bce000-3875-11eb-189d-5ff380c98ab7
 # ╠═b4162a60-3876-11eb-35cf-7b9f19aa5dee
 # ╟─e40cf580-3891-11eb-18f5-91f5f4fde6aa
-# ╠═10270b30-3877-11eb-1ebd-0191994f7ce9
-# ╠═1729d2e0-3878-11eb-20d4-a72381e5183f
+# ╠═0a888a34-9202-11eb-1140-ed3b2e3ee76d
 # ╠═cd251cf0-3876-11eb-117b-19ac57df203c

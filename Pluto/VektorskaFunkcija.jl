@@ -13,13 +13,8 @@ macro bind(def, element)
     end
 end
 
-# ╔═╡ cc9d0080-323c-11eb-3a85-c90ff746ef6d
-begin
-	using PlutoUI
-	using SymPy
-	using Plots
-	plotly()
-end
+# ╔═╡ 0bdd0fc6-9203-11eb-1ea3-9fe58aca7da0
+using PlutoUI, SymPy, Plots
 
 # ╔═╡ aa073e00-323c-11eb-0297-83e3db12248d
 md"
@@ -33,24 +28,16 @@ i računanje i vizualizacija brzine $\vec v(t)=\vec{F'}(t)$  i ubrzanja
 $\vec a(t)=\vec{F''}(t)$.
 "
 
+# ╔═╡ 24a51cd8-9203-11eb-17c9-2f4c9f661de1
+plotly()
+
 # ╔═╡ ebd34e00-3813-11eb-1679-ab5dd54dd0e0
 # Nezvisna varijabla
 t=symbols("t", real=true);
 
-# ╔═╡ a4bd3bc0-827d-11eb-3002-e9648fcf1ef1
-begin
-	# Komponente vektorske funkcije
-	f(t)=cos(t)
-	g(t)=2sin(t)
-	h(t)=2t
-end
-
 # ╔═╡ 2ab1a092-323d-11eb-18f9-a360e9c13c31
-# Vektor položaja točke T u trenutku t
-T=[f(t),g(t),h(t)]
-
-# ╔═╡ 606cc190-828a-11eb-095f-9b235be449a4
-subs.(T,t,1)
+# Vektorska funkcija - Položaj točke T u trenutku t
+s=(cos(t),2sin(t),2t)
 
 # ╔═╡ d1cedc8e-827d-11eb-3029-05c983ea391f
 # Vremenski interval
@@ -58,20 +45,21 @@ I=0:0.01:20
 
 # ╔═╡ b48a9c60-828b-11eb-30de-dfc0dd06dc64
 # Putanja
-P=[Tuple(subs.(T,t,x)) for x in I]
+T=[subs.(s,t,x) for x in I]
 
 # ╔═╡ ec3548d0-827d-11eb-0448-19c055c84fa8
 # Nacrtajmo putanju
-plot3d(P,xlabel="x",ylabel="y",label="Putanja")
+plot3d(T,xlabel="x",ylabel="y",label="Putanja")
 
 # ╔═╡ f283ad40-8281-11eb-2046-af757fa13c7b
 begin
 	# Brzina i ubrzanje su vektori
-	v=diff.(T,t)
+	v=diff.(s,t)
 	a=diff.(v,t)
 end
 
 # ╔═╡ cc522230-8288-11eb-0795-d7f5a8dfce69
+# Na primjer
 subs.(v,t,1),subs.(a,t,1)
 
 # ╔═╡ fe11c640-827e-11eb-31a7-1f3008f993d6
@@ -81,22 +69,21 @@ subs.(v,t,1),subs.(a,t,1)
 begin
 	# Nacrtajmo putanju, točku, brzinu i ubrzanje
 	# Putanja
-	plot3d(P,xlabel="x",ylabel="y",label="Putanja")
+	plot3d(T,xlabel="x",ylabel="y",label="Putanja")
 	# Točka
-	scatter!(Tuple(subs.(T,t,x)),label="Točka",ms=2,color=:black)
+	scatter!(subs.(s,t,x),label="Točka",ms=2,color=:black)
 	# Brzina
-	plot!([Tuple(subs.(T,t,x)), Tuple(subs.(T+v,t,x))], label="Brzina", lw=2, arrow=:arrow, lc=:red)
+	plot!([subs.(s,t,x), subs.(s.+v,t,x)], label="Brzina", lw=2, arrow=:arrow, lc=:red)
 	# Ubrzanje
-	plot!([Tuple(subs.(T,t,x)), Tuple(subs.(T+a,t,x))], label="Ubrzanje", lw=2, arrow=:arrow, lc=:green)
+	plot!([subs.(s,t,x), subs.(s.+a,t,x)], label="Ubrzanje", lw=2, arrow=:arrow, lc=:green)
 end
 
 # ╔═╡ Cell order:
 # ╟─aa073e00-323c-11eb-0297-83e3db12248d
-# ╠═cc9d0080-323c-11eb-3a85-c90ff746ef6d
+# ╠═0bdd0fc6-9203-11eb-1ea3-9fe58aca7da0
+# ╠═24a51cd8-9203-11eb-17c9-2f4c9f661de1
 # ╠═ebd34e00-3813-11eb-1679-ab5dd54dd0e0
 # ╠═2ab1a092-323d-11eb-18f9-a360e9c13c31
-# ╠═606cc190-828a-11eb-095f-9b235be449a4
-# ╠═a4bd3bc0-827d-11eb-3002-e9648fcf1ef1
 # ╠═d1cedc8e-827d-11eb-3029-05c983ea391f
 # ╠═b48a9c60-828b-11eb-30de-dfc0dd06dc64
 # ╠═ec3548d0-827d-11eb-0448-19c055c84fa8
