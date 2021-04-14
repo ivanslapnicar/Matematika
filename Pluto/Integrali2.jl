@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.12.21
+# v0.14.1
 
 using Markdown
 using InteractiveUtils
@@ -156,7 +156,7 @@ T₄=integrate(s₃,x)
 # ╠═da968a92-6a56-4dff-97f6-5e87616d4291
 # ╠═e8bcf956-422d-4829-9ab6-fda047805a5b
 # ╠═58468833-ef55-4983-b637-cadd7bcdf9f3
-# ╠═2ac4782d-6c74-4402-b6eb-17554ef27d03
+# ╟─2ac4782d-6c74-4402-b6eb-17554ef27d03
 # ╠═17c63bc5-611b-4cfc-a916-c0018dd71ecb
 # ╠═4375ec68-a2d1-4cf8-a2ab-88bb69717406
 # ╠═b9b5d733-931d-4f69-8f44-6bde41f7458b

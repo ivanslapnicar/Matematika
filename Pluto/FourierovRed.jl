@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.12.21
+# v0.14.1
 
 using Markdown
 using InteractiveUtils
@@ -42,9 +42,12 @@ $$S(x)=\begin{cases}
 
 # ╔═╡ f01ffb1c-0448-4ec4-aae7-448103d69137
 md"""
-## Simboličko računanje 
+# Simboličko računanje 
 `SymPy` je paket za simboličko računanje preuzet iz `Python`-a, a `Plots` je jedan od paketa za crtanje.
 """
+
+# ╔═╡ 10db8aa7-257b-4b8c-8139-ea8c358309bc
+PlutoUI.TableOfContents(aside=true)
 
 # ╔═╡ f3a6889c-ca75-4d1e-ad58-60fe349f7f95
 md"""
@@ -59,12 +62,12 @@ end
 
 # ╔═╡ f923b766-dc5f-4ba3-84d9-c4cf2f8bcfdc
 md"""
-### Definiranje koeficijenata
+## Definiranje koeficijenata
 """
 
 # ╔═╡ f3bf7cfa-70fd-42bf-8529-fc4abbdbf6cf
 md"""
-### Zadavanje funkcije $f(x)$ i granica intervala $[x_0,x_1]$
+## Zadavanje funkcije $f(x)$ i granica intervala $[x_0,x_1]$
 
 Potrebno je koristiti predefiniranu simboličku varijablu `PI` za razliku od varijabli `pi` ili $\pi$
 kojima je definirana `Float64` vrijednost.
@@ -98,7 +101,7 @@ a(1)
 
 # ╔═╡ 63ab0a30-1b0d-4901-a839-ecaed6277209
 md"""
-### Računanje reda i crtanje sume
+## Računanje reda i crtanje sume
 """
 
 # ╔═╡ 64b48ad8-ef62-4421-9b0c-49fd668134c2
@@ -116,7 +119,7 @@ S
 
 # ╔═╡ 391259b2-2c71-4048-abad-2f4f616f5c7d
 md"""
-## Korištenje funkcije `fourier_series()`
+# Korištenje funkcije `fourier_series()`
 
 Prvo pogledajmo simboličko računanje razvoja u Taylor-ov red.
 """
@@ -151,7 +154,7 @@ Float64(c(1))
 
 # ╔═╡ 668afdd8-fac5-40ad-989c-5f1f445a3feb
 md"""
-### Računanje aproksimacije i crtanje
+## Računanje aproksimacije i crtanje
 """
 
 # ╔═╡ 8d15e233-08d5-41f1-bd5d-d3104926b070
@@ -175,7 +178,7 @@ end
 
 # ╔═╡ 97bd2f95-7b50-48e2-ace1-f91c998d91d0
 md"""
-## Numerička integracija
+# Numerička integracija
 Fourierove koeficijente čemo izračunati _numeričkom integracijom_ (vidi [Numeričko integriranje](http://www.fesb.hr/mat2/)) koristeći Julia naredbu [quadgk](http://docs.julialang.org/en/latest/stdlib/math/?highlight=quadgk#Base.quadgk).
 
 Ovaj dio je izrađen prema bilježnici [lecture-2.ipynb](http://nbviewer.ipython.org/url/math.mit.edu/~stevenj/18.303/lecture-2.ipynb) [Stevena Johnsona](http://math.mit.edu/~stevenj/) izrađenoj za predmet [18.303](http://math.mit.edu/~stevenj/18.303/).
@@ -224,7 +227,7 @@ Fourier(x->x,15,-π,π)
 
 # ╔═╡ 563c1abe-3d92-4e6d-98bd-e2fdbee9ab81
 md"""
-### Primjeri
+## Primjeri
 """
 
 # ╔═╡ 9fa90640-81cf-11eb-1006-870690f4e937
@@ -237,6 +240,7 @@ Fourier(x->x<0 ? 0 : x,15,-1,1)
 # ╟─4c7c1b5c-c925-497c-947f-11556419289f
 # ╟─f01ffb1c-0448-4ec4-aae7-448103d69137
 # ╠═527b68b7-f9d4-427d-bb19-94cafcb3e951
+# ╠═10db8aa7-257b-4b8c-8139-ea8c358309bc
 # ╟─f3a6889c-ca75-4d1e-ad58-60fe349f7f95
 # ╠═5f91a1a3-6bcb-4d94-8ee9-664242a0d4f9
 # ╟─f923b766-dc5f-4ba3-84d9-c4cf2f8bcfdc

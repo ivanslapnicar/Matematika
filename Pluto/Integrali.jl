@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.12.21
+# v0.14.1
 
 using Markdown
 using InteractiveUtils
@@ -12,9 +12,6 @@ using SymPy
 md"
 # Integrali racionalnih funkcija
 "
-
-# ╔═╡ 6d3084ca-516b-471d-84c2-825aacfb2e49
-versioninfo()
 
 # ╔═╡ d52c1d09-9bee-4359-8e2c-a969a2f32ea3
 # Ova naredba daje popis svih djelova paketa, uglavnom su to funkcije. 
@@ -138,7 +135,6 @@ I₉=subs(I₈,t,tanh(x/2))
 
 # ╔═╡ Cell order:
 # ╟─efc1cf20-8276-11eb-39ba-bd62a4342e68
-# ╠═6d3084ca-516b-471d-84c2-825aacfb2e49
 # ╠═5bb6cf00-9b75-4e74-bc75-6a059bc1b32d
 # ╠═d52c1d09-9bee-4359-8e2c-a969a2f32ea3
 # ╠═8153dabd-5be6-4308-b7c5-1f4ed54722ab
@@ -148,7 +144,7 @@ I₉=subs(I₈,t,tanh(x/2))
 # ╠═232dcad5-1984-4421-9c1a-001406096217
 # ╠═a2819cd4-d0b3-476a-ab8c-40838db72d54
 # ╠═74af42dd-9768-4e91-aa3b-b26c69d6fb68
-# ╠═de024987-9c44-4199-9085-b259980e94a5
+# ╟─de024987-9c44-4199-9085-b259980e94a5
 # ╠═62c5d76c-9eef-40a9-b8c9-446720733f80
 # ╠═379bc6e9-7a38-4f3e-8e4a-2ff80917880b
 # ╠═28dd8649-ed7c-47e5-b7ab-69e99dc0ce86
