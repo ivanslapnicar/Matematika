@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.12.21
+# v0.14.4
 
 using Markdown
 using InteractiveUtils
@@ -38,7 +38,7 @@ __Napomena__: Točke definiramo kao `Tuple()`, na primjer `T=(x,y,z)`. Radi rač
 # Zadajmo trokut ABC
 begin
 	A=(1,2,5)
-	B=(-2,0,-3)
+	B=(-2,0,3)
 	C=(2,1,-1)
 end
 
@@ -61,7 +61,7 @@ begin
 	# Plots.markersizes=2
 	mesh3d([A,B,C],legend=false, title="Trokut",color=:lightgray)
 	scatter!([A,B,C],ms=2) # ms = markersize
-	plot!(xlabel="x",ylabel="y",zlabel="z")
+	plot!(xlabel="x",ylabel="y",zlabel="z",aspect_ratio=:equal)
 end
 
 # ╔═╡ 52805212-1cf6-11eb-148c-b118898c3bd1
@@ -161,10 +161,10 @@ A₁,B₁,C₁,T=težište(A,B,C)
 begin
 	mesh3d([A,B,C],legend=false, title="Težište",color=:lightgray)
 	scatter!([A₁,B₁,C₁],ms=2)
-	scatter!(T,color=:black,ms=2)
 	plot!([A,A₁])
 	plot!([B,B₁])
-	plot!([C,C₁])
+	plot!([C,C₁],aspect_ratio=:equal)
+	scatter!(T,color=:black,ms=2)
 end
 
 # ╔═╡ 6095a900-1d42-11eb-0f78-c79765cb47dc
@@ -219,7 +219,7 @@ begin
 	# Provjera ako je ortocentar izvan trokuta
 	plot!([A,Oc])
 	plot!([B,Oc])
-	plot!([C,Oc])
+	plot!([C,Oc],aspect_ratio=:equal)
 end
 
 # ╔═╡ dd7c1700-1d48-11eb-3cd8-07985f0d50c5
@@ -284,7 +284,7 @@ begin
 	plot!([(B+C)/2,S])
 	# Crtanje kružnice
     Cir=kružnica(A,B,C,S,r)
-	plot!(Cir)
+	plot!(Cir,aspect_ratio=:equal)
 end
 
 # ╔═╡ 8ff034e0-1df1-11eb-35b4-9b9e3178bef9
@@ -333,7 +333,7 @@ begin
 	plot!([C,Su])
 	# Crtanje kružnice
 	Cir₁=kružnica(A,B,C,Su,ru)
-	plot!(Cir₁)
+	plot!(Cir₁,aspect_ratio=:equal)
 end
 
 # ╔═╡ Cell order:
