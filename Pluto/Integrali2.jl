@@ -1,11 +1,25 @@
 ### A Pluto.jl notebook ###
-# v0.14.1
+# v0.14.7
 
 using Markdown
 using InteractiveUtils
 
+# ╔═╡ 74ee49bd-d9fe-437d-8098-cf3606b18560
+# Na vašem računalu isključite ovu čeliju ...
+begin
+	import Pkg
+    Pkg.activate(mktempdir())
+    Pkg.add([
+		Pkg.PackageSpec(name="PlutoUI"),
+        Pkg.PackageSpec(name="SymPy")
+    ])
+end
+
 # ╔═╡ d613968d-7549-401a-9f25-8169660f121f
-using SymPy
+using SymPy, PlutoUI
+
+# ╔═╡ a5797465-247a-4e33-b733-46ad9a58ad00
+TableOfContents(title="📚 Sadržaj", aside=true)
 
 # ╔═╡ 71bf3e90-8277-11eb-188f-0f6601464f27
 md"
@@ -129,9 +143,11 @@ T₄=integrate(s₃,x)
 
 
 # ╔═╡ Cell order:
+# ╠═74ee49bd-d9fe-437d-8098-cf3606b18560
+# ╠═d613968d-7549-401a-9f25-8169660f121f
+# ╠═a5797465-247a-4e33-b733-46ad9a58ad00
 # ╟─71bf3e90-8277-11eb-188f-0f6601464f27
 # ╟─90465d99-b8e8-4ed3-9943-64aec908d6f7
-# ╠═d613968d-7549-401a-9f25-8169660f121f
 # ╠═37981771-05ce-40b5-a2a9-8031d41cdb6b
 # ╠═1dee94b6-fa66-462e-bbb3-0c941a59dd8e
 # ╠═cc61e680-8110-11eb-2211-1d212f28c36d

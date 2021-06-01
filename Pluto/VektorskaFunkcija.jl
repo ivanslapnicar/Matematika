@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.12.21
+# v0.14.7
 
 using Markdown
 using InteractiveUtils
@@ -13,8 +13,23 @@ macro bind(def, element)
     end
 end
 
+# ╔═╡ ad5cc8d5-1ed7-487c-9088-5c1586aa2796
+# Na vašem računalu isključite ovu čeliju ...
+begin
+	import Pkg
+    Pkg.activate(mktempdir())
+    Pkg.add([
+		Pkg.PackageSpec(name="PlutoUI"),
+        Pkg.PackageSpec(name="Plots"),
+		Pkg.PackageSpec(name="SymPy")
+    ])
+end
+
 # ╔═╡ 0bdd0fc6-9203-11eb-1ea3-9fe58aca7da0
 using PlutoUI, SymPy, Plots
+
+# ╔═╡ 24a51cd8-9203-11eb-17c9-2f4c9f661de1
+plotly()
 
 # ╔═╡ aa073e00-323c-11eb-0297-83e3db12248d
 md"
@@ -27,9 +42,6 @@ $$\vec F(t)=f(t)\vec i +g(t)\vec j + h(t)\vec k$$
 i računanje i vizualizacija brzine $\vec v(t)=\vec{F'}(t)$  i ubrzanja 
 $\vec a(t)=\vec{F''}(t)$.
 "
-
-# ╔═╡ 24a51cd8-9203-11eb-17c9-2f4c9f661de1
-plotly()
 
 # ╔═╡ ebd34e00-3813-11eb-1679-ab5dd54dd0e0
 # Nezvisna varijabla
@@ -63,7 +75,9 @@ end
 subs.(v,t,1),subs.(a,t,1)
 
 # ╔═╡ fe11c640-827e-11eb-31a7-1f3008f993d6
-@bind x Slider(I[1]:I[5]-I[1]:I[end],show_value=true)
+md"
+x = $(@bind x Slider(I[1]:I[5]-I[1]:I[end],show_value=true))
+"
 
 # ╔═╡ 794c55d0-8281-11eb-180d-97b6176aff70
 begin
@@ -79,9 +93,10 @@ begin
 end
 
 # ╔═╡ Cell order:
-# ╟─aa073e00-323c-11eb-0297-83e3db12248d
+# ╠═ad5cc8d5-1ed7-487c-9088-5c1586aa2796
 # ╠═0bdd0fc6-9203-11eb-1ea3-9fe58aca7da0
 # ╠═24a51cd8-9203-11eb-17c9-2f4c9f661de1
+# ╟─aa073e00-323c-11eb-0297-83e3db12248d
 # ╠═ebd34e00-3813-11eb-1679-ab5dd54dd0e0
 # ╠═2ab1a092-323d-11eb-18f9-a360e9c13c31
 # ╠═d1cedc8e-827d-11eb-3029-05c983ea391f
@@ -89,5 +104,5 @@ end
 # ╠═ec3548d0-827d-11eb-0448-19c055c84fa8
 # ╠═f283ad40-8281-11eb-2046-af757fa13c7b
 # ╠═cc522230-8288-11eb-0795-d7f5a8dfce69
-# ╠═fe11c640-827e-11eb-31a7-1f3008f993d6
+# ╟─fe11c640-827e-11eb-31a7-1f3008f993d6
 # ╠═794c55d0-8281-11eb-180d-97b6176aff70

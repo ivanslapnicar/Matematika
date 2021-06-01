@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.12.11
+# v0.14.7
 
 using Markdown
 using InteractiveUtils
@@ -11,6 +11,17 @@ macro bind(def, element)
         global $(esc(def)) = Core.applicable(Base.get, el) ? Base.get(el) : missing
         el
     end
+end
+
+# ╔═╡ c916eb57-244a-4cc3-b37e-e8d8bc07435b
+# Na vašem računalu isključite ovu čeliju ...
+begin
+	import Pkg
+    Pkg.activate(mktempdir())
+    Pkg.add([
+		Pkg.PackageSpec(name="PlutoUI"),
+        Pkg.PackageSpec(name="Plots")
+    ])
 end
 
 # ╔═╡ cc9d0080-323c-11eb-3a85-c90ff746ef6d
@@ -28,9 +39,11 @@ Vizualizacija opće sinusoide i kosinusoide.
 
 # ╔═╡ e6afb200-323d-11eb-0c1d-89d62fc72af8
 md"
-$(@bind A Slider(0.4:0.2:4))
-$(@bind ω Slider(0.2:π))
-$(@bind φ Slider(-π:0.2:π))
+A = $(@bind A Slider(0.4:0.2:4,show_value=true))
+
+ω = $(@bind ω Slider(0.2:0.2:π,show_value=true))
+
+φ = $(@bind φ Slider(-π:0.2:π,show_value=true))
 "
 
 # ╔═╡ 2ab1a092-323d-11eb-18f9-a360e9c13c31
@@ -42,7 +55,8 @@ plot(f,-2π,2π,legend=false)
 
 # ╔═╡ Cell order:
 # ╟─aa073e00-323c-11eb-0297-83e3db12248d
+# ╠═c916eb57-244a-4cc3-b37e-e8d8bc07435b
 # ╠═cc9d0080-323c-11eb-3a85-c90ff746ef6d
 # ╠═2ab1a092-323d-11eb-18f9-a360e9c13c31
 # ╠═607227e2-323d-11eb-3a5f-2d5d34130b84
-# ╠═e6afb200-323d-11eb-0c1d-89d62fc72af8
+# ╟─e6afb200-323d-11eb-0c1d-89d62fc72af8

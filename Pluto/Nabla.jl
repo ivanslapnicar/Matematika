@@ -1,8 +1,16 @@
 ### A Pluto.jl notebook ###
-# v0.14.1
+# v0.14.7
 
 using Markdown
 using InteractiveUtils
+
+# ╔═╡ a3b7752b-4157-4a62-93cb-0920bd3b0059
+# Na vašem računalu isključite ovu čeliju ...
+begin
+	import Pkg
+    Pkg.activate(mktempdir())
+    Pkg.add("SymPy")
+end
 
 # ╔═╡ 0bdd0fc6-9203-11eb-1ea3-9fe58aca7da0
 using SymPy, LinearAlgebra
@@ -41,9 +49,6 @@ __Usmjerena derivacija__ vektorskog polja $\vec w(x,y,z)$ u smjeru vektora $\vec
 
 $$\frac{\partial \vec w}{\partial \vec a}(x,y,z)=(\vec a_0 ∇) \vec w(x,y,z).$$
 "
-
-# ╔═╡ 24a51cd8-9203-11eb-17c9-2f4c9f661de1
-plotly()
 
 # ╔═╡ c75d36c0-923c-11eb-0477-c3101e21f880
 x,y,z=symbols(:x),symbols(:y),symbols(:z)
@@ -183,9 +188,9 @@ a∇(a/norm(a),u)
 subs.(a∇(a/norm(a),u),x=>T[1],y=>T[2],z=>T[3])
 
 # ╔═╡ Cell order:
+# ╠═a3b7752b-4157-4a62-93cb-0920bd3b0059
 # ╟─aa073e00-323c-11eb-0297-83e3db12248d
 # ╠═0bdd0fc6-9203-11eb-1ea3-9fe58aca7da0
-# ╠═24a51cd8-9203-11eb-17c9-2f4c9f661de1
 # ╠═c75d36c0-923c-11eb-0477-c3101e21f880
 # ╠═1b261092-923a-11eb-01d6-7f705b30d46e
 # ╠═1ca28980-925d-11eb-2be1-815a5df595ff

@@ -1,8 +1,16 @@
 ### A Pluto.jl notebook ###
-# v0.14.1
+# v0.14.7
 
 using Markdown
 using InteractiveUtils
+
+# ╔═╡ 63c21e5b-c943-46de-bac3-8b9d98ad5a58
+# Na vašem računalu isključite ovu čeliju ...
+begin
+	import Pkg
+    Pkg.activate(mktempdir())
+    Pkg.add("SymPy")
+end
 
 # ╔═╡ 5bb6cf00-9b75-4e74-bc75-6a059bc1b32d
 # Učita se paket SymPy
@@ -135,6 +143,7 @@ I₉=subs(I₈,t,tanh(x/2))
 
 # ╔═╡ Cell order:
 # ╟─efc1cf20-8276-11eb-39ba-bd62a4342e68
+# ╠═63c21e5b-c943-46de-bac3-8b9d98ad5a58
 # ╠═5bb6cf00-9b75-4e74-bc75-6a059bc1b32d
 # ╠═d52c1d09-9bee-4359-8e2c-a969a2f32ea3
 # ╠═8153dabd-5be6-4308-b7c5-1f4ed54722ab

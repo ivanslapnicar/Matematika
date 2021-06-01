@@ -1,14 +1,30 @@
 ### A Pluto.jl notebook ###
-# v0.14.1
+# v0.14.7
 
 using Markdown
 using InteractiveUtils
 
-# ╔═╡ 527b68b7-f9d4-427d-bb19-94cafcb3e951
-using SymPy, Plots, PlutoUI
+# ╔═╡ 32829acf-f80e-4b42-93da-97dedaea24ac
+# Na vašem računalu isključite ovu čeliju ...
+begin
+	import Pkg
+    Pkg.activate(mktempdir())
+    Pkg.add([
+		Pkg.PackageSpec(name="PlutoUI"),
+        Pkg.PackageSpec(name="Plots"),
+		Pkg.PackageSpec(name="SymPy"),
+		Pkg.PackageSpec(name="QuadGK")
+    ])
+end
 
-# ╔═╡ fb2faa70-423e-44a7-bb0b-945d5373525d
-using QuadGK
+# ╔═╡ 527b68b7-f9d4-427d-bb19-94cafcb3e951
+using SymPy, Plots, PlutoUI, QuadGK
+
+# ╔═╡ dd8735d3-d41c-4656-aec4-c85f1f3055c9
+plotly()
+
+# ╔═╡ 10db8aa7-257b-4b8c-8139-ea8c358309bc
+TableOfContents(title="📚 Sadržaj", aside=true)
 
 # ╔═╡ 4c7c1b5c-c925-497c-947f-11556419289f
 md"""
@@ -46,9 +62,6 @@ md"""
 `SymPy` je paket za simboličko računanje preuzet iz `Python`-a, a `Plots` je jedan od paketa za crtanje.
 """
 
-# ╔═╡ 10db8aa7-257b-4b8c-8139-ea8c358309bc
-PlutoUI.TableOfContents(aside=true)
-
 # ╔═╡ f3a6889c-ca75-4d1e-ad58-60fe349f7f95
 md"""
 Definirajmo simboličku varijablu $x$ i simboličku cjelobrojnu (integer) varijablu $n$.
@@ -67,7 +80,7 @@ md"""
 
 # ╔═╡ f3bf7cfa-70fd-42bf-8529-fc4abbdbf6cf
 md"""
-## Zadavanje funkcije $f(x)$ i granica intervala $[x_0,x_1]$
+## Zadavanje funkcije i granica intervala
 
 Potrebno je koristiti predefiniranu simboličku varijablu `PI` za razliku od varijabli `pi` ili $\pi$
 kojima je definirana `Float64` vrijednost.
@@ -187,7 +200,7 @@ Definirajmo funkcije `sinecoef` i `coscoef` koje numerički računaju koeficijen
 """
 
 # ╔═╡ 92fca3af-ee77-4367-8901-7ab2ed9a5441
-# ?quadgk
+#?quadgk
 
 # ╔═╡ e324535b-822b-4149-815e-c6074352da70
 begin
@@ -222,13 +235,13 @@ function Fourier(f::Function, n::Int, x₀, x₁) where T
 	plot!(X,fouriersum(a, b, X, x₁-x₀),title=title,label="Fourierov red")
 end
 
-# ╔═╡ 50dc52e0-81cc-11eb-22bd-8d0651f27151
-Fourier(x->x,15,-π,π)
-
 # ╔═╡ 563c1abe-3d92-4e6d-98bd-e2fdbee9ab81
 md"""
 ## Primjeri
 """
+
+# ╔═╡ 50dc52e0-81cc-11eb-22bd-8d0651f27151
+Fourier(x->x,15,-π,π)
 
 # ╔═╡ 9fa90640-81cf-11eb-1006-870690f4e937
 Fourier(x->x^2,15,-1,1)
@@ -237,10 +250,12 @@ Fourier(x->x^2,15,-1,1)
 Fourier(x->x<0 ? 0 : x,15,-1,1)
 
 # ╔═╡ Cell order:
+# ╠═32829acf-f80e-4b42-93da-97dedaea24ac
+# ╠═527b68b7-f9d4-427d-bb19-94cafcb3e951
+# ╠═dd8735d3-d41c-4656-aec4-c85f1f3055c9
+# ╠═10db8aa7-257b-4b8c-8139-ea8c358309bc
 # ╟─4c7c1b5c-c925-497c-947f-11556419289f
 # ╟─f01ffb1c-0448-4ec4-aae7-448103d69137
-# ╠═527b68b7-f9d4-427d-bb19-94cafcb3e951
-# ╠═10db8aa7-257b-4b8c-8139-ea8c358309bc
 # ╟─f3a6889c-ca75-4d1e-ad58-60fe349f7f95
 # ╠═5f91a1a3-6bcb-4d94-8ee9-664242a0d4f9
 # ╟─f923b766-dc5f-4ba3-84d9-c4cf2f8bcfdc
@@ -267,13 +282,12 @@ Fourier(x->x<0 ? 0 : x,15,-1,1)
 # ╠═8d15e233-08d5-41f1-bd5d-d3104926b070
 # ╠═d13171b2-7606-409d-97db-3b6dbe28dc20
 # ╟─97bd2f95-7b50-48e2-ace1-f91c998d91d0
-# ╠═fb2faa70-423e-44a7-bb0b-945d5373525d
 # ╠═92fca3af-ee77-4367-8901-7ab2ed9a5441
 # ╠═e324535b-822b-4149-815e-c6074352da70
 # ╠═927b3b56-c7f1-4843-9973-3be826440e1f
 # ╠═a5aae9b2-8115-11eb-3789-1b9d3dff66b7
 # ╠═d7435370-81cb-11eb-0489-93c34a3d2cb9
-# ╠═50dc52e0-81cc-11eb-22bd-8d0651f27151
 # ╟─563c1abe-3d92-4e6d-98bd-e2fdbee9ab81
+# ╠═50dc52e0-81cc-11eb-22bd-8d0651f27151
 # ╠═9fa90640-81cf-11eb-1006-870690f4e937
 # ╠═dfc81fde-81cf-11eb-3972-4994239f7731

@@ -1,15 +1,28 @@
 ### A Pluto.jl notebook ###
-# v0.14.4
+# v0.14.7
 
 using Markdown
 using InteractiveUtils
 
-# ╔═╡ adfa1406-1cf2-11eb-18c9-a58b9f9064c8
+# ╔═╡ 153bdbbf-708e-4da1-86a0-6d559e277774
+# Na vašem računalu isključite ovu čeliju ...
 begin
-	using Plots
-	using LinearAlgebra
+	import Pkg
+    Pkg.activate(mktempdir())
+    Pkg.add([
+		Pkg.PackageSpec(name="PlutoUI"),
+        Pkg.PackageSpec(name="Plots")
+    ])
+end
+
+# ╔═╡ 5072980b-06f4-472d-8801-786d9ea2848c
+begin
+	using PlutoUI, Plots, LinearAlgebra
 	plotly()
 end
+
+# ╔═╡ f381f9e8-d165-4ae9-a0cb-2210e2faa453
+TableOfContents(title="📚 Sadržaj", aside=true)
 
 # ╔═╡ be21625e-1cf1-11eb-2efb-0b857e0bbd1e
 md"
@@ -66,7 +79,7 @@ end
 
 # ╔═╡ 52805212-1cf6-11eb-148c-b118898c3bd1
 md"
-## Opseg trokuta
+## Opseg
 
 __Opseg__ je zbroj duljina stranica.
 "
@@ -337,12 +350,14 @@ begin
 end
 
 # ╔═╡ Cell order:
+# ╠═153bdbbf-708e-4da1-86a0-6d559e277774
+# ╠═5072980b-06f4-472d-8801-786d9ea2848c
+# ╠═f381f9e8-d165-4ae9-a0cb-2210e2faa453
 # ╟─be21625e-1cf1-11eb-2efb-0b857e0bbd1e
 # ╠═b40e846c-1cf2-11eb-0375-cd3f3e221358
-# ╠═adfa1406-1cf2-11eb-18c9-a58b9f9064c8
 # ╠═9bcc7de0-1d3e-11eb-1f26-49ae5603bd60
 # ╠═1bed9df2-1cf3-11eb-3da5-0ff167b35323
-# ╟─52805212-1cf6-11eb-148c-b118898c3bd1
+# ╠═52805212-1cf6-11eb-148c-b118898c3bd1
 # ╠═5e303fa0-1cf6-11eb-24f7-3b5da0b2957d
 # ╠═7ce59f58-1cf6-11eb-138d-2fd2931a68ac
 # ╟─82a6f1a8-1cf6-11eb-0ead-71c9821841fe

@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.12.21
+# v0.14.7
 
 using Markdown
 using InteractiveUtils
@@ -14,11 +14,7 @@ macro bind(def, element)
 end
 
 # ╔═╡ cc9d0080-323c-11eb-3a85-c90ff746ef6d
-begin
-	using Plots
-	using PlutoUI
-	using SymPy
-end
+using Plots, PlutoUI, SymPy
 
 # ╔═╡ 8ad18300-3869-11eb-251b-1faf2f0e4d6e
 using Base.MathConstants
@@ -29,6 +25,9 @@ md"
 
 Računanje i vizualizacija tangente i normale.
 "
+
+# ╔═╡ 4ed0642a-0e3b-4f66-99ed-69c4a80bd39f
+plotly()
 
 # ╔═╡ ebd34e00-3813-11eb-1679-ab5dd54dd0e0
 # Nezvisna varijabla
@@ -59,7 +58,9 @@ tangenta(f,x₀)= x -> f'(x₀)*(x-x₀)+f(x₀)
 normala(f,x₀)=x -> (-1.0/f'(x₀))*(x-x₀)+f(x₀)
 
 # ╔═╡ 47854920-3818-11eb-0c5c-3564f8022020
-@bind x₀ Slider(a:0.1:b)
+md"
+x₀ = $(@bind x₀ Slider(a:0.1:b,show_value=true))
+"
 
 # ╔═╡ a0e3d7fe-3814-11eb-2b06-2746249700e1
 begin
@@ -82,12 +83,12 @@ u točki $x=1$, $y>0$, i nacrtajmo odgovarajuću sliku.
 
 Vrijedi 
 
-\begin{aligned}
+$$\begin{aligned}
 y(x)&=\sqrt{1-\frac{x^2}{4}},\cr
 y(1)&=-\frac{1}{2\sqrt{3}},\cr
 y'(x)&=\frac{1}{2\sqrt{1-\frac{x^2}{4}}}\cdot \frac{-2x}{4},\cr
 y'(1)&=-\frac{1}{2\sqrt{3}},
-\end{aligned}
+\end{aligned}$$
 
 pa jednadžba tražene tangente glasi
 
@@ -138,6 +139,7 @@ end
 # ╔═╡ Cell order:
 # ╟─aa073e00-323c-11eb-0297-83e3db12248d
 # ╠═cc9d0080-323c-11eb-3a85-c90ff746ef6d
+# ╠═4ed0642a-0e3b-4f66-99ed-69c4a80bd39f
 # ╠═ebd34e00-3813-11eb-1679-ab5dd54dd0e0
 # ╠═2ab1a092-323d-11eb-18f9-a360e9c13c31
 # ╠═78797d12-91ff-11eb-3630-e1cbf90810e6
@@ -145,7 +147,7 @@ end
 # ╠═e07f69c0-3814-11eb-180f-351a75f67a3b
 # ╠═8b7bb0e0-3815-11eb-3511-dbbf3e026bc3
 # ╠═a0e3d7fe-3814-11eb-2b06-2746249700e1
-# ╠═47854920-3818-11eb-0c5c-3564f8022020
+# ╟─47854920-3818-11eb-0c5c-3564f8022020
 # ╟─bca6e1e0-3873-11eb-2bc9-95d05556c02a
 # ╠═0cec93f0-3867-11eb-24ca-457b3b98b3fe
 # ╟─0caf8290-3875-11eb-3655-edd38e61e14b
