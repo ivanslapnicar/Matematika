@@ -101,8 +101,20 @@ In some cases one can use simpler substitutions $t=\tan x$, $t=\sin x$ or $t=\co
 # Rational function of trigonometric functions
 f₁=1/((2+cos(x))*sin(x))
 
+# ╔═╡ ba94ab0d-8a95-4701-8027-cb4c7597d5f7
+plot(f₁,ylims=(-10,10))
+
 # ╔═╡ 74af42dd-9768-4e91-aa3b-b26c69d6fb68
 I₁=integrate(f₁)
+
+# ╔═╡ 99f3871f-3f95-4978-8acc-0dcacb0fac3b
+md"
+> N.B. Absolute value is missing in the second term
+"
+
+# ╔═╡ 986ae51c-fa27-4fe7-997b-23e7f9cd7ec7
+# The correct integral is
+I₁ₐ=log(tan(x/2)^2+3)/3+log(abs(tan(x/2)))/3
 
 # ╔═╡ f214a586-9cd0-4191-9765-203ae9cf5261
 # The function f₁ is equivalent to the function f₂
@@ -112,30 +124,33 @@ f₂=sin(x)/((2+cos(x))*(1-cos(x)^2))
 # Simpler substitution
 I₂=integrate(f₂)
 
-# ╔═╡ 5c47daa0-91b7-4a2f-b8d4-318d37006b68
-md"
-> The integrals I₁ and I₂ should differ by a constant
-"
-
-# ╔═╡ a9b7d48f-6a3f-4494-bed8-18cfffa56962
-plot(I₁)
-
-# ╔═╡ 805ed392-9a5a-4519-bd0d-71c05e1425bf
-plot(I₂)
-
 # ╔═╡ b0b05bc7-14d8-4fd3-bd66-9cf4438a5dce
 md"
 > N.B. Absolute value is missing in the first parentheses!
 "
 
 # ╔═╡ 11b969ae-e4fb-4393-b34a-65c9debb9930
-Iₐ=log(abs(1-cos(x)))/6-log(cos(x)+1)/2+log(cos(x)+2)/3
+I₂ₐ=log(abs(1-cos(x)))/6-log(cos(x)+1)/2+log(cos(x)+2)/3
 
-# ╔═╡ 42d526f9-4661-4418-9c36-66ae40379ddc
-plot(I₁);plot!(Iₐ)
+# ╔═╡ 5c47daa0-91b7-4a2f-b8d4-318d37006b68
+md"
+> The integrals I₁ₐ and I₂ₐ should differ by a constant
+"
+
+# ╔═╡ 3c6a6793-c721-4811-8804-a7c19be433a6
+plot(I₁)
+
+# ╔═╡ 4c03178c-e9b2-4449-b916-b50bc6448f77
+plot(I₂)
+
+# ╔═╡ a9b7d48f-6a3f-4494-bed8-18cfffa56962
+plot(I₁ₐ, xlims=(-pi,pi))
+
+# ╔═╡ 805ed392-9a5a-4519-bd0d-71c05e1425bf
+plot(I₁ₐ);plot!(I₂ₐ)
 
 # ╔═╡ 3a4c5cae-4fd3-4adf-a874-f0af58dcfbf4
-plot(I₁-Iₐ)
+plot(I₁ₐ-I₂ₐ,ylims=(-1,1))
 
 # ╔═╡ 092581c3-dd70-4ed5-afba-1a3851636e42
 md"
@@ -1468,15 +1483,19 @@ version = "1.9.2+0"
 # ╠═ac8513bf-6506-4698-b85d-4d92fced705a
 # ╟─e75c8a66-50da-462b-9587-0928b79e2374
 # ╠═49945370-73c9-4b64-9021-dc789d47d252
+# ╠═ba94ab0d-8a95-4701-8027-cb4c7597d5f7
 # ╠═74af42dd-9768-4e91-aa3b-b26c69d6fb68
+# ╠═99f3871f-3f95-4978-8acc-0dcacb0fac3b
+# ╠═986ae51c-fa27-4fe7-997b-23e7f9cd7ec7
 # ╠═f214a586-9cd0-4191-9765-203ae9cf5261
 # ╠═9808f070-b512-46af-aea2-0e0be63db726
-# ╟─5c47daa0-91b7-4a2f-b8d4-318d37006b68
-# ╠═a9b7d48f-6a3f-4494-bed8-18cfffa56962
-# ╠═805ed392-9a5a-4519-bd0d-71c05e1425bf
 # ╟─b0b05bc7-14d8-4fd3-bd66-9cf4438a5dce
 # ╠═11b969ae-e4fb-4393-b34a-65c9debb9930
-# ╠═42d526f9-4661-4418-9c36-66ae40379ddc
+# ╟─5c47daa0-91b7-4a2f-b8d4-318d37006b68
+# ╠═3c6a6793-c721-4811-8804-a7c19be433a6
+# ╠═4c03178c-e9b2-4449-b916-b50bc6448f77
+# ╠═a9b7d48f-6a3f-4494-bed8-18cfffa56962
+# ╠═805ed392-9a5a-4519-bd0d-71c05e1425bf
 # ╠═3a4c5cae-4fd3-4adf-a874-f0af58dcfbf4
 # ╟─092581c3-dd70-4ed5-afba-1a3851636e42
 # ╠═12744d74-9022-4519-b4dc-4bb085e16ac2
